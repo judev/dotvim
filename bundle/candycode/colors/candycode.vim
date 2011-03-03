@@ -101,7 +101,7 @@ hi Visual       guifg=#ffffff       guibg=#606070       gui=NONE
 
 hi IncSearch    guifg=#000000       guibg=#eedd33       gui=bold 
             \   ctermfg=white       ctermbg=yellow      cterm=NONE
-hi Search       guifg=#efefd0       guibg=#937340       gui=NONE
+hi Search       guifg=#eeffee       guibg=#003300       gui=NONE
             \   ctermfg=white       ctermbg=darkgreen   cterm=NONE
 
 hi MatchParen   guifg=NONE          guibg=#3377aa       gui=NONE

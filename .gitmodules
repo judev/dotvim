@@ -10,6 +10,3 @@
 [submodule "bundle/extradite"]
 	path = bundle/extradite
 	url = https://github.com/int3/vim-extradite.git
-[submodule "bundle/syntastic"]
-	path = bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
