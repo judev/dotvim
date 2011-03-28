@@ -8,8 +8,11 @@ set noeol
 set binary
 
 " presentation settings
-"set number
-set relativenumber
+if v:version < 702
+	set number
+else
+	set relativenumber
+endif
 set numberwidth=3       " number of columns for line numbers
 set textwidth=0         " Do not wrap words (insert)
 set nowrap              " Do not wrap words (view)
@@ -69,7 +72,9 @@ set noet                " do not expand tabs into spaces
 
 set history=1000
 set undolevels=1000
-set undofile
+if v:version >= 702
+	set undofile
+endif
 set scrolloff=3
 set wildmode=list:longest
 set smarttab
@@ -92,7 +97,9 @@ set smartcase           " do not ignore if search pattern has CAPS
 
 " directory settings
 set backupdir=~/.backup,.
-set undodir=~/.backup,.
+if v:version >= 702
+	set undodir=~/.backup,.
+endif
 set directory=~/.backup,~/tmp,.
 
 
