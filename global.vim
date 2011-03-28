@@ -24,6 +24,9 @@ set laststatus=2        " always show the status line
 set listchars=tab:▷⋅,trail:·
 "set list
 
+" turn off blinking cursor in normal mode
+set gcr=n:blinkon0
+
 colorscheme candycode
 set background=dark
 
@@ -39,7 +42,7 @@ hi SpellErrors guibg=red guifg=black ctermbg=red ctermfg=black
 "set statusline=%<%f\ %h%m%r%#warningmsg#%{SyntasticStatuslineFlag()}%*%=%-14.(%l,%c%V%)\ %P
 set statusline=%<%1*%t%*\ %h%m%r%#warningmsg#%{SyntasticStatuslineFlag()}%*%=%-14.(%l,%c%V%)\ %P
 " highlihgt the file name
-hi User1 term=bold,reverse cterm=bold ctermfg=4 ctermbg=2 gui=bold guifg=Blue guibg=#44aa00
+hi User1 term=bold,reverse cterm=bold ctermfg=4 ctermbg=2 gui=bold guifg=#ffffff guibg=#004400
 
 
 " behaviour
