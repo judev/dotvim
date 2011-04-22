@@ -1392,7 +1392,7 @@ function! YRMapsExpression(sid, motion, ...)
     " determining which operations to record
     " Simple example is '=' which simply formats the 
     " the selected text.
-    if ' \('.escape(join(split(g:yankring_ignore_operator), '\|'), '/.*~$^[]' ).'\) ' !~ escape(v:operator, '/.*~$^[]') 
+    if s:yr_has_voperator && ' \('.escape(join(split(g:yankring_ignore_operator), '\|'), '/.*~$^[]' ).'\) ' !~ escape(v:operator, '/.*~$^[]') 
         " Check if we are performing an action that will
         " take us into insert mode
         if '[cCsS]' !~ escape(v:operator, '/.*~$^[]') && a:motion !~ '@'
