@@ -1,3 +1,4 @@
+
 " be 'modern'
 set nocompatible
 syntax on
@@ -23,29 +24,50 @@ set wildmenu            " enhanced command completion
 set visualbell          " use visual bell instead of beeping
 set noerrorbells
 set laststatus=2        " always show the status line
-"set listchars=tab:▷⋅,trail:·,eol:$
-set listchars=tab:▷⋅,trail:·
-"set list
+set listchars=tab:▷⋅,trail:·,eol:$
+"set listchars=tab:▷⋅,trail:·
+set list
 
 " turn off blinking cursor in normal mode
 set gcr=n:blinkon0
 
-colorscheme candycode
-set background=dark
+if !has('gui_running')
+	let g:solarized_termcolors=16
+endif
+if strftime('%H') >= 8 && strftime('%H') <= 19
+	set background=light
+else
+	set background=dark
+endif
+"let g:solarized_contrast  = "high"
+"set background=dark
+"colorscheme candycode
+colorscheme solarized
 
 " set gfn=Inconsolata:h14
-set gfn=Meslo\ LG\ M\ DZ:h13
+set gfn=Meslo\ LG\ M\ DZ:h14
 
+function! ToggleBackground()
+    if (g:solarized_style=="dark")
+    let g:solarized_style="light"
+    colorscheme solarized
+else
+    let g:solarized_style="dark"
+    colorscheme solarized
+endif
+endfunction
+command! Togbg call ToggleBackground()
+nnoremap <F6> :call ToggleBackground()<CR>
+inoremap <F6> <ESC>:call ToggleBackground()<CR>a
+vnoremap <F6> <ESC>:call ToggleBackground()<CR>
 
 " highlight spell errors
 hi SpellErrors guibg=red guifg=black ctermbg=red ctermfg=black
 
-" default:
-" set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-"set statusline=%<%f\ %h%m%r%#warningmsg#%{SyntasticStatuslineFlag()}%*%=%-14.(%l,%c%V%)\ %P
-set statusline=%<%1*%t%*\ %h%m%r%#warningmsg#%{SyntasticStatuslineFlag()}%*%=%-14.(%l,%c%V%)\ %P
+set statusline=%(%l/%L\ %c%V\ %P%)\ %#warningmsg#%{SyntasticStatuslineFlag()}%*%=%-h%m%r\ %t%*\ 
+
 " highlihgt the file name
-hi User1 term=bold,reverse cterm=bold ctermfg=4 ctermbg=2 gui=bold guifg=#ffffff guibg=#004400
+"hi User1 term=bold,reverse cterm=bold ctermfg=4 ctermbg=2 gui=bold guifg=#ffffff guibg=#004400
 
 
 " behaviour
