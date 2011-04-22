@@ -1,2 +1,2 @@
-set et
-set sw=2
+setlocal et
+setlocal sw=2

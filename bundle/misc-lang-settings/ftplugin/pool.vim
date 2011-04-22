@@ -1,5 +1,5 @@
-set syntax=ruby
-set sw=2
-set ts=2
-set et
+setlocal syntax=ruby
+setlocal sw=2
+setlocal ts=2
+setlocal et
 

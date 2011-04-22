@@ -1,4 +1,4 @@
-set sw=2
-set ts=2
-set et
-set iskeyword+=!,?,=
+setlocal sw=2
+setlocal ts=2
+setlocal et
+setlocal iskeyword+=!,?,=

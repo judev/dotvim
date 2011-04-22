@@ -1,3 +1,3 @@
-set sw=2
-set ts=2
-set noet
+setlocal sw=2
+setlocal ts=2
+setlocal noet
