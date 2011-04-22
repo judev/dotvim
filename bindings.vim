@@ -33,6 +33,7 @@ set completeopt=menuone,preview
 
 nnoremap j gj
 nnoremap k gk
+
 " Easy window navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -43,4 +44,13 @@ cmap w!! w !sudo tee % >/dev/null
 
 " ,cd to change working directory to current file directory
 nmap <silent> <Leader>cd :cd %:p:h<CR>
+
+" make paste reformat and indent
+nnoremap P P'[v']=
+nnoremap p p'[v']=
+"nnoremap <Esc>P P'[v']=
+"nnoremap <Esc>p p'[v']=
+
+nmap ,o o<Esc>k
+nmap ,O O<Esc>j
 
