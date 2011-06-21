@@ -35,10 +35,17 @@ nnoremap j gj
 nnoremap k gk
 
 " Easy window navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+
+" Easy window movement
+nmap <leader><C-h> <C-w>H
+nmap <leader><C-j> <C-w>J
+nmap <leader><C-k> <C-w>K
+nmap <leader><C-l> <C-w>L
+
 " w!! to write as root
 cmap w!! w !sudo tee % >/dev/null
 
