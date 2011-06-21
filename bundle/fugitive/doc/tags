@@ -1,4 +1,5 @@
 fugitive	fugitive.txt	/*fugitive*
+fugitive#statusline()	fugitive.txt	/*fugitive#statusline()*
 fugitive-:Gblame	fugitive.txt	/*fugitive-:Gblame*
 fugitive-:Gcd	fugitive.txt	/*fugitive-:Gcd*
 fugitive-:Gcommit	fugitive.txt	/*fugitive-:Gcommit*
@@ -30,5 +31,6 @@ fugitive-commands	fugitive.txt	/*fugitive-commands*
 fugitive-mappings	fugitive.txt	/*fugitive-mappings*
 fugitive-o	fugitive.txt	/*fugitive-o*
 fugitive-revision	fugitive.txt	/*fugitive-revision*
+fugitive-statusline	fugitive.txt	/*fugitive-statusline*
 fugitive-~	fugitive.txt	/*fugitive-~*
 fugitive.txt	fugitive.txt	/*fugitive.txt*
