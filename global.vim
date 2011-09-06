@@ -1,5 +1,3 @@
-
-" be 'modern'
 set nocompatible
 syntax on
 filetype plugin indent on
@@ -25,50 +23,21 @@ set visualbell          " use visual bell instead of beeping
 set noerrorbells
 set laststatus=2        " always show the status line
 set listchars=tab:▷⋅,trail:·,eol:$
-"set listchars=tab:▷⋅,trail:·
 set list
 
 " turn off blinking cursor in normal mode
 set gcr=n:blinkon0
 
-if !has('gui_running')
-	let g:solarized_termcolors=16
-endif
-if strftime('%H') >= 8 && strftime('%H') <= 19
-	set background=light
-else
-	set background=dark
-endif
-"let g:solarized_contrast  = "high"
-"set background=dark
-"colorscheme candycode
-colorscheme solarized
+colorscheme deserted
 
 " set gfn=Inconsolata:h14
 set gfn=Meslo\ LG\ M\ DZ:h14
 
-function! ToggleBackground()
-    if (g:solarized_style=="dark")
-    let g:solarized_style="light"
-    colorscheme solarized
-else
-    let g:solarized_style="dark"
-    colorscheme solarized
-endif
-endfunction
-command! Togbg call ToggleBackground()
-nnoremap <F6> :call ToggleBackground()<CR>
-inoremap <F6> <ESC>:call ToggleBackground()<CR>a
-vnoremap <F6> <ESC>:call ToggleBackground()<CR>
 
 " highlight spell errors
 hi SpellErrors guibg=red guifg=black ctermbg=red ctermfg=black
 
 set statusline=%(%l/%L\ %c%V\ %P%)\ %#warningmsg#%{SyntasticStatuslineFlag()}%*%=%-h%m%r\ %t%*\ 
-
-" highlihgt the file name
-"hi User1 term=bold,reverse cterm=bold ctermfg=4 ctermbg=2 gui=bold guifg=#ffffff guibg=#004400
-
 
 " behaviour
 
@@ -91,6 +60,9 @@ set modelines=5         " number of lines to check for vim: directives at the st
 set ts=4                " number of spaces in a tab
 set sw=4                " number of spaces for indent
 set noet                " do not expand tabs into spaces
+
+:command! -range=% -nargs=0 T2S execute "<line1>,<line2>s/^\\t\\+/\\=substitute(submatch(0), '\\t', repeat(' ', ".&ts."), 'g')"
+:command! -range=% -nargs=0 S2T execute "<line1>,<line2>s/^\\( \\{".&ts."\\}\\)\\+/\\=substitute(submatch(0), ' \\{".&ts."\\}', '\\t', 'g')"
 
 set history=1000
 set undolevels=1000
@@ -132,10 +104,21 @@ set foldlevel=9
 set nofoldenable        "dont fold by default "
 
 
+"set clipboard=unnamed
 
 set pastetoggle=<F2>
 set tags=tags;/
 
+let g:LustyJugglerShowKeys = 'a'
 
 " extended '%' mapping for if/then/else/end etc
 runtime macros/matchit.vim
+
+let g:vimwiki_list = [{"path": "~/Dropbox/wiki/", "path_html": "~/Dropbox/wiki_html/"}]
+
+let g:netrw_browse_split = 2
+" use directory listing cache only remotely
+let g:netrw_fastbrowse = 1
+" default to tree listing style
+let g:netrw_liststyle= 4
+

@@ -10,7 +10,7 @@ nnoremap Y y$
 nmap <silent> <leader>s :set nolist!<CR>
 
 " ,. to disable search match highlight
-nmap <silent> ,. :nohlsearch<CR>
+nmap <silent> ,. :set hlsearch! hlsearch?<CR>
 " Ctrl-N to disable search match highlight
 nmap <silent> <C-N> :silent noh<CR>
 
@@ -58,6 +58,7 @@ nnoremap p p'[v']=
 "nnoremap <Esc>P P'[v']=
 "nnoremap <Esc>p p'[v']=
 
-nmap ,o o<Esc>k
-nmap ,O O<Esc>j
+nmap ,o :Utl<cr>
+
+nmap <buffer><Space> <Plug>VimwikiToggleListItem
 
