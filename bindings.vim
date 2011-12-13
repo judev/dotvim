@@ -30,7 +30,7 @@ nmap <leader>n :cn<CR>
 "set completeopt=menuone,preview,longest
 set completeopt=menuone,preview
 
-
+" make j and k work as expected over wrapped lines
 nnoremap j gj
 nnoremap k gk
 
@@ -66,4 +66,15 @@ endif
 nmap ,o :Utl<cr>
 
 nmap <buffer><Space> <Plug>VimwikiToggleListItem
+
+" command mode shortcuts
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <M-b> <S-Left>
+cnoremap <M-f> <S-Right>
+
 
