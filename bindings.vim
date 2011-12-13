@@ -58,6 +58,11 @@ nnoremap p p'[v']=
 "nnoremap <Esc>P P'[v']=
 "nnoremap <Esc>p p'[v']=
 
+" disable middle click to paste on mac
+if g:isDarwin
+	nnoremap <MiddleMouse> <Nop>
+endif
+
 nmap ,o :Utl<cr>
 
 nmap <buffer><Space> <Plug>VimwikiToggleListItem

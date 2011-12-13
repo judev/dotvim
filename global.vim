@@ -25,6 +25,13 @@ set laststatus=2        " always show the status line
 set listchars=tab:▷⋅,trail:·,eol:$
 set list
 
+if has("unix")
+	let s:uname = system("uname")
+	if s:uname == "Darwin\n"
+		let g:isDarwin = 1
+	endif
+endif
+
 " turn off blinking cursor in normal mode
 set gcr=n:blinkon0
 
