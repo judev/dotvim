@@ -129,3 +129,5 @@ let g:netrw_fastbrowse = 1
 " default to tree listing style
 let g:netrw_liststyle= 4
 
+let g:yankring_history_dir = "~/.vim/"
+
