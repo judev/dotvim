@@ -2,7 +2,6 @@ set nocompatible
 syntax on
 filetype plugin indent on
 
-" prevent vim from adding that stupid empty line at the end of every file
 set noeol
 set binary
 
