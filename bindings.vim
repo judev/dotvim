@@ -63,8 +63,6 @@ if g:isDarwin
 	nnoremap <MiddleMouse> <Nop>
 endif
 
-nmap ,o :Utl<cr>
-
 nmap <buffer><Space> <Plug>VimwikiToggleListItem
 
 " command mode shortcuts

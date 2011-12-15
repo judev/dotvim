@@ -44,7 +44,7 @@ set gfn=Meslo\ LG\ M\ DZ:h14
 " highlight spell errors
 hi SpellErrors guibg=red guifg=black ctermbg=red ctermfg=black
 
-set statusline=%(%l/%L\ %c%V\ %P%)\ %#warningmsg#%{SyntasticStatuslineFlag()}%*%=%-h%m%r\ %t%*\ 
+set statusline=%(%l/%L\ %c%V\ %P%)\ %#warningmsg#%*%=%-h%m%r\ %t%*\ 
 
 " behaviour
 
