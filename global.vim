@@ -34,7 +34,7 @@ endif
 " turn off blinking cursor in normal mode
 set gcr=n:blinkon0
 
-colorscheme deserted
+colorscheme jvcolorscheme
 
 " set gfn=Inconsolata:h14
 set gfn=Meslo\ LG\ M\ DZ:h14
@@ -126,7 +126,16 @@ let g:netrw_browse_split = 2
 " use directory listing cache only remotely
 let g:netrw_fastbrowse = 1
 " default to tree listing style
-let g:netrw_liststyle= 4
+let g:netrw_liststyle = 3
+" remove default of putting directories first
+let g:netrw_sort_sequence = "\<core\%(\.\d\+\)\=\>,\.h$,\.c$,\.cpp$,\~\=\*$,*,\.o$,\.obj$,\.info$,\.swp$,\.bak$,\~$"
 
 let g:yankring_history_dir = "~/.vim/"
 
+function! TextWrap()
+	setlocal wrap
+	setlocal linebreak
+	setlocal nolist
+	setlocal textwidth=0
+	setlocal wrapmargin=0
+endfunction

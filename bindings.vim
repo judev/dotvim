@@ -1,20 +1,22 @@
-let mapleader = ","
+let mapleader = "\\"
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
 "make Y consistent with C and D
-nnoremap Y y$
+"nnoremap Y y$
 
 " toggle highlight trailing whitespace
 nmap <silent> <leader>s :set nolist!<CR>
 
 " ,. to disable search match highlight
-nmap <silent> ,. :set hlsearch! hlsearch?<CR>
-" Ctrl-N to disable search match highlight
-nmap <silent> <C-N> :silent noh<CR>
+nmap <silent> <leader>. :nohlsearch<CR>
 
-" Ctrol-E to switch between 2 last buffers
+" turn off search highlighting in insert mode
+autocmd InsertEnter * :setlocal nohlsearch
+autocmd InsertLeave * :setlocal hlsearch
+
+" Control-E to switch between 2 last buffers
 nmap <C-E> :b#<CR>
 
 " ,e to fast finding files. just type beginning of a name and hit TAB
@@ -46,8 +48,30 @@ nmap <leader><C-j> <C-w>J
 nmap <leader><C-k> <C-w>K
 nmap <leader><C-l> <C-w>L
 
+" split window
+nmap <leader>swh       :topleft  vnew<CR>
+nmap <leader>swl       :botright vnew<CR>
+nmap <leader>swk       :topleft  new<CR>
+nmap <leader>swj       :botright new<CR>
+nmap <leader>sw<left>  :topleft  vnew<CR>
+nmap <leader>sw<right> :botright vnew<CR>
+nmap <leader>sw<up>    :topleft  new<CR>
+nmap <leader>sw<down>  :botright new<CR>
+" split buffer
+nmap <leader>sh        :leftabove  vsplit<CR>
+nmap <leader>sl        :rightbelow vsplit<CR>
+nmap <leader>sk        :leftabove  split<CR>
+nmap <leader>sj        :rightbelow split<CR>
+nmap <leader>s<left>   :leftabove  vsplit<CR>
+nmap <leader>s<right>  :rightbelow vsplit<CR>
+nmap <leader>s<up>     :leftabove  split<CR>
+nmap <leader>s<down>   :rightbelow split<CR>
+
 " w!! to write as root
 cmap w!! w !sudo tee % >/dev/null
+
+" :W to write
+cmap W w
 
 " ,cd to change working directory to current file directory
 nmap <silent> <Leader>cd :cd %:p:h<CR>
@@ -75,4 +99,19 @@ cnoremap <C-f> <Right>
 cnoremap <M-b> <S-Left>
 cnoremap <M-f> <S-Right>
 
-
+" Map F1 to Esc in insert mode, expand current work in normal mode
+function! SophHelp()
+  if &buftype=="help" && match( strpart( getline("."), col(".")-1,1), "\\S")<0
+    bw
+  else
+    try
+      exec "help ".expand("<cWORD>")
+    catch /:E149:\|:E661:/
+      " E149 no help for <subject>
+      " E661 no <language> help for <subject>
+      exec "help ".expand("<cword>")
+    endtry
+  endif
+endfunc
+nnoremap <silent> <F1> :call SophHelp()<CR>
+imap <F1> <Esc>

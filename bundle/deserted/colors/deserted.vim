@@ -67,52 +67,63 @@ hi Ignore	guifg=grey40
 "hi Error
 hi Todo		guifg=orangered guibg=yellow2
 
-" color terminal definitions
-hi SpecialKey	ctermfg=darkred
-hi NonText	ctermfg=darkred
-"hi NonText	cterm=bold ctermfg=darkblue
-hi Directory	ctermfg=darkcyan
-hi ErrorMsg	cterm=bold ctermfg=7 ctermbg=1
-hi IncSearch	cterm=NONE ctermfg=yellow ctermbg=green
-hi Search	cterm=NONE ctermfg=grey ctermbg=blue
-hi MoreMsg	ctermfg=darkgreen
-hi ModeMsg	cterm=NONE ctermfg=brown
-hi LineNr	ctermfg=3
-hi Question	ctermfg=green
-hi StatusLine	cterm=bold,reverse
-hi StatusLineNC cterm=reverse
-hi VertSplit	cterm=reverse
-hi Title	ctermfg=5
-hi Visual	cterm=reverse
-hi VisualNOS	cterm=bold,underline
-hi WarningMsg	ctermfg=1
-hi WildMenu	ctermfg=0 ctermbg=3
 if version >= 700 " Vim 7.x specific colors
-  "hi CursorLine     guifg=NONE        guibg=#121212     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=BOLD
-  "hi CursorColumn   guifg=NONE        guibg=#121212     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=BOLD
-  "hi MatchParen     guifg=#f6f3e8     guibg=#857b6f     gui=BOLD      ctermfg=white       ctermbg=darkgray    cterm=NONE
-  hi Pmenu          guifg=darkkhaki     guibg=#181818     gui=NONE      ctermfg=3        ctermbg=8        cterm=NONE
-  hi PmenuSel       guifg=#000000     guibg=darkkhaki     gui=NONE      ctermfg=0        ctermbg=3        cterm=NONE
-  "hi Search         guifg=NONE        guibg=NONE        gui=underline ctermfg=NONE        ctermbg=NONE        cterm=underline
+	"hi CursorLine     guifg=NONE        guibg=#121212     gui=NONE
+	"hi CursorColumn   guifg=NONE        guibg=#121212     gui=NONE
+	"hi MatchParen     guifg=#f6f3e8     guibg=#857b6f     gui=BOLD
+	hi Pmenu          guifg=darkkhaki     guibg=#181818     gui=NONE
+	hi PmenuSel       guifg=#000000     guibg=darkkhaki     gui=NONE
+	"hi Search         guifg=NONE        guibg=NONE        gui=underline
 endif
-hi Folded	ctermfg=darkgrey ctermbg=NONE
-hi FoldColumn	ctermfg=darkgrey ctermbg=NONE
-hi DiffAdd	ctermbg=4
-hi DiffChange	ctermbg=5
-hi DiffDelete	cterm=bold ctermfg=4 ctermbg=6
-hi DiffText	cterm=bold ctermbg=1
-hi Comment	ctermfg=darkcyan
-hi Constant	ctermfg=brown
-hi Special	ctermfg=5
-hi Identifier	ctermfg=6
-hi Statement	ctermfg=3
-hi PreProc	ctermfg=7
-hi Todo		ctermfg=red ctermbg=NONE
-hi Type		ctermfg=2
-hi Underlined	cterm=underline ctermfg=5
-hi Ignore	cterm=bold ctermfg=7
-hi Ignore	ctermfg=darkgrey
-hi Error	cterm=bold ctermfg=7 ctermbg=1
 
+"if &t_Co < 256
+"    " color terminal definitions
+"    hi SpecialKey	ctermfg=darkred
+"    hi NonText	ctermfg=darkred
+"    "hi NonText	cterm=bold ctermfg=darkblue
+"    hi Directory	ctermfg=darkcyan
+"    hi ErrorMsg	cterm=bold ctermfg=7 ctermbg=1
+"    hi IncSearch	cterm=NONE ctermfg=yellow ctermbg=green
+"    hi Search	cterm=NONE ctermfg=grey ctermbg=blue
+"    hi MoreMsg	ctermfg=darkgreen
+"    hi ModeMsg	cterm=NONE ctermfg=brown
+"    hi LineNr	ctermfg=3
+"    hi Question	ctermfg=green
+"    hi StatusLine	cterm=bold,reverse
+"    hi StatusLineNC cterm=reverse
+"    hi VertSplit	cterm=reverse
+"    hi Title	ctermfg=5
+"    hi Visual	cterm=reverse
+"    hi VisualNOS	cterm=bold,underline
+"    hi WarningMsg	ctermfg=1
+"    hi WildMenu	ctermfg=0 ctermbg=3
+"    hi Folded	ctermfg=darkgrey ctermbg=NONE
+"    hi FoldColumn	ctermfg=darkgrey ctermbg=NONE
+"    hi DiffAdd	ctermbg=4
+"    hi DiffChange	ctermbg=5
+"    hi DiffDelete	cterm=bold ctermfg=4 ctermbg=6
+"    hi DiffText	cterm=bold ctermbg=1
+"    hi Comment	ctermfg=darkcyan
+"    hi Constant	ctermfg=brown
+"    hi Special	ctermfg=5
+"    hi Identifier	ctermfg=6
+"    hi Statement	ctermfg=3
+"    hi PreProc	ctermfg=7
+"    hi Todo		ctermfg=red ctermbg=NONE
+"    hi Type		ctermfg=2
+"    hi Underlined	cterm=underline ctermfg=5
+"    hi Ignore	cterm=bold ctermfg=7
+"    hi Ignore	ctermfg=darkgrey
+"    hi Error	cterm=bold ctermfg=7 ctermbg=1
+
+"    if version >= 700 " Vim 7.x specific colors
+"      "hi CursorLine     guifg=NONE        guibg=#121212     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=BOLD
+"      "hi CursorColumn   guifg=NONE        guibg=#121212     gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=BOLD
+"      "hi MatchParen     guifg=#f6f3e8     guibg=#857b6f     gui=BOLD      ctermfg=white       ctermbg=darkgray    cterm=NONE
+"      hi Pmenu          guifg=darkkhaki     guibg=#181818     gui=NONE      ctermfg=3        ctermbg=8        cterm=NONE
+"      hi PmenuSel       guifg=#000000     guibg=darkkhaki     gui=NONE      ctermfg=0        ctermbg=3        cterm=NONE
+"      "hi Search         guifg=NONE        guibg=NONE        gui=underline ctermfg=NONE        ctermbg=NONE        cterm=underline
+"    endif
+"endif
 
 "vim: sw=4
