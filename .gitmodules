@@ -18,6 +18,10 @@
 	path = bundle/NrrwRgn
 	url = https://github.com/chrisbra/NrrwRgn.git
 	ignore = untracked
+[submodule "bundle/trailing-whitespace"]
+	path = bundle/trailing-whitespace
+	url = https://github.com/bronson/vim-trailing-whitespace.git
+	ignore = untracked
 [submodule "src/vimwiki"]
 	path = src/vimwiki
 	url = https://github.com/kstep/vimwiki-vim-plugin.git
