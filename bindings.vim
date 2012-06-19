@@ -83,7 +83,7 @@ nnoremap p p'[v']=
 "nnoremap <Esc>p p'[v']=
 
 " disable middle click to paste on mac
-if g:isDarwin
+if exists("g:isDarwin") && g:isDarwin
 	nnoremap <MiddleMouse> <Nop>
 endif
 

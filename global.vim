@@ -6,10 +6,20 @@ set noeol
 set binary
 
 " presentation settings
-if v:version < 702
+if v:version < 703
 	set number
 else
 	set relativenumber
+
+	function! NumberToggle()
+		if(&relativenumber == 1)
+			set number
+		else
+			set relativenumber
+		endif
+	endfunc
+
+	nnoremap <C-n> :call NumberToggle()<cr>
 endif
 set numberwidth=3       " number of columns for line numbers
 set textwidth=0         " Do not wrap words (insert)
@@ -72,7 +82,7 @@ set noet                " do not expand tabs into spaces
 
 set history=1000
 set undolevels=1000
-if v:version >= 702
+if v:version >= 703
 	set undofile
 endif
 set scrolloff=3
@@ -97,7 +107,7 @@ set smartcase           " do not ignore if search pattern has CAPS
 
 " directory settings
 set backupdir=~/.backup,.
-if v:version >= 702
+if v:version >= 703
 	set undodir=~/.backup,.
 endif
 set directory=~/.backup,~/tmp,.

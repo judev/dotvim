@@ -1,3 +1,7 @@
+if !has('ruby')
+  let g:LustyJugglerSuppressRubyWarning = 1
+endif
+
 call pathogen#runtime_append_all_bundles()
 
 source ~/.vim/global.vim
