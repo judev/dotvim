@@ -286,7 +286,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("Todo", "ff4500", "eeee00", "")
 
 	if version >= 700 " Vim 7.x specific colors
-		"hi CursorLine     guifg=NONE        guibg=#121212     gui=NONE
+		call <SID>X("CursorLine", "", "313131", "none")
 		"hi CursorColumn   guifg=NONE        guibg=#121212     gui=NONE
 		"call <SID>X("MatchParen", "181818", "dfffdf", "")
 		call <SID>X("MatchParen", "afaf5f", "4e4e4e", "bold")
