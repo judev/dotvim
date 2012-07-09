@@ -142,10 +142,17 @@ let g:netrw_sort_sequence = "\<core\%(\.\d\+\)\=\>,\.h$,\.c$,\.cpp$,\~\=\*$,*,\.
 
 let g:yankring_history_dir = "~/.vim/"
 
-function! TextWrap()
+function! Textwrap()
 	setlocal wrap
 	setlocal linebreak
 	setlocal nolist
 	setlocal textwidth=0
 	setlocal wrapmargin=0
 endfunction
+
+" set up some more useful digraphs
+if has("digraphs")
+    digraph ., 8230    " ellipsis (…)
+endif
+
+
