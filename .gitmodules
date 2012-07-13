@@ -26,3 +26,6 @@
 	path = src/vimwiki
 	url = https://github.com/kstep/vimwiki-vim-plugin.git
 	ignore = untracked
+[submodule "bundle/vim-visual-star-search"]
+	path = bundle/vim-visual-star-search
+	url = https://github.com/nelstrom/vim-visual-star-search.git
