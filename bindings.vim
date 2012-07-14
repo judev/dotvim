@@ -70,9 +70,6 @@ nmap <leader>s<down>   :rightbelow split<CR>
 " w!! to write as root
 cmap w!! w !sudo tee % >/dev/null
 
-" :W to write
-cmap W w
-
 " ,cd to change working directory to current file directory
 nmap <silent> <Leader>cd :cd %:p:h<CR>
 
@@ -90,14 +87,15 @@ endif
 nmap <buffer><Space> <Plug>VimwikiToggleListItem
 
 " command mode shortcuts
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
-cnoremap <C-b> <Left>
-cnoremap <C-f> <Right>
-cnoremap <M-b> <S-Left>
-cnoremap <M-f> <S-Right>
+"cnoremap <C-x> <C-a>
+"cnoremap <C-a> <Home>
+"cnoremap <C-e> <End>
+"cnoremap <C-p> <Up>
+"cnoremap <C-n> <Down>
+"cnoremap <C-b> <Left>
+"cnoremap <C-f> <Right>
+"cnoremap <M-b> <S-Left>
+"cnoremap <M-f> <S-Right>
 
 " Map F1 to Esc in insert mode, expand current work in normal mode
 function! SophHelp()
