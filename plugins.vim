@@ -17,6 +17,8 @@ nmap <leader>y :YRShow<cr>
 " Fugitive
 " ,g for Ggrep
 nmap <leader>g :Ggrep 
+" avoid proliferation of fugitive buffers (http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/)
+autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " Ack
 " ,a for Ack
