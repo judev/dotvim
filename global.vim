@@ -93,7 +93,7 @@ set ttyfast
 
 " mouse settings
 if has("mouse")
-  set mouse=a
+  set mouse-=a
 endif
 set mousehide                           " Hide mouse pointer on insert mode."
 

@@ -2,7 +2,7 @@ if !has('ruby')
   let g:LustyJugglerSuppressRubyWarning = 1
 endif
 
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 
 source ~/.vim/global.vim
 source ~/.vim/bindings.vim
