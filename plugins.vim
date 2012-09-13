@@ -1,4 +1,10 @@
 
+if g:isDarwin
+	let g:script_runner_key = '<D-r>'
+else
+	let g:script_runner_key = '<F6>'
+endif
+
 " nerdcommenter
 " ,/ to invert comment on the current line/selection
 nmap <leader>/ :call NERDComment(0, "invert")<cr>
