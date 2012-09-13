@@ -33,6 +33,8 @@ nmap <leader>f :FufFile **/<CR>
 " ,b to fast finding files using fuzzy finder.
 nmap <leader>b :FufBuffer<CR>
 
+nmap <leader>j :LustyJuggler<CR>
+
 nnoremap <F5> :GundoToggle<CR>
 
 if !exists('g:jv_vimrc_funcs')
