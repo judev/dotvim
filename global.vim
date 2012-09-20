@@ -34,6 +34,7 @@ set laststatus=2        " always show the status line
 set listchars=tab:▷⋅,trail:·,eol:$
 set list
 
+let g:isDarwin = 0
 if has("unix")
 	let s:uname = system("uname")
 	if s:uname == "Darwin\n"
