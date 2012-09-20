@@ -16,9 +16,6 @@ nmap <silent> <leader>. :nohlsearch<CR>
 autocmd InsertEnter * :setlocal nohlsearch
 autocmd InsertLeave * :setlocal hlsearch
 
-" Control-E to switch between 2 last buffers
-nmap <C-E> :b#<CR>
-
 " ,e to fast finding files. just type beginning of a name and hit TAB
 nmap <leader>e :e **/
 
