@@ -33,13 +33,7 @@ nmap <leader>a :Ack
 " ,e to fast finding files. just type beginning of a name and hit TAB
 nmap <leader>e :e **/
 
-" ,f to fast finding files using fuzzy finder.
-nmap <leader>f :FufFile **/<CR>
-
-" ,b to fast finding files using fuzzy finder.
-nmap <leader>b :FufBuffer<CR>
-
-nmap <leader>j :LustyJuggler<CR>
+nmap <leader>b :LustyJuggler<CR>
 
 nnoremap <F5> :GundoToggle<CR>
 
