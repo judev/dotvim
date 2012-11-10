@@ -1,5 +1,5 @@
 
-if g:isDarwin
+if has("gui_macvim")
 	let g:script_runner_key = '<D-r>'
 else
 	let g:script_runner_key = '<F6>'
