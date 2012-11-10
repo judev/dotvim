@@ -34,6 +34,9 @@ set laststatus=2        " always show the status line
 set listchars=tab:▷⋅,trail:·,eol:$
 set list
 
+set sessionoptions-=options " do not store global and local values in a session
+set sessionoptions-=folds " do not store folds
+
 let g:isDarwin = 0
 if has("unix")
 	let s:uname = system("uname")
