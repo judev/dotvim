@@ -38,12 +38,10 @@ nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
-
-" Easy window movement
-nmap <leader><C-h> <C-w>H
-nmap <leader><C-j> <C-w>J
-nmap <leader><C-k> <C-w>K
-nmap <leader><C-l> <C-w>L
+nmap <leader>h <C-w>j<C-w>|
+nmap <leader>l <C-w>k<C-w>|
+nmap <leader>j <C-w>j<C-w>_
+nmap <leader>k <C-w>k<C-w>_
 
 " split window
 nmap <leader>swh       :topleft  vnew<CR>
