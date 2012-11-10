@@ -1,6 +1,9 @@
 if !has('ruby')
   let g:LustyJugglerSuppressRubyWarning = 1
 endif
+if v:version < 702
+  let g:loaded_acp = 1
+endif
 
 call pathogen#infect()
 
