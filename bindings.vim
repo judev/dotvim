@@ -79,8 +79,6 @@ if exists("g:isDarwin") && g:isDarwin
 	nnoremap <MiddleMouse> <Nop>
 endif
 
-nmap <buffer><Space> <Plug>VimwikiToggleListItem
-
 " command mode shortcuts
 "cnoremap <C-x> <C-a>
 "cnoremap <C-a> <Home>
