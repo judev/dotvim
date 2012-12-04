@@ -246,10 +246,10 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("Cursor", "272727", "ffde66", "")
     "CursorIM
     "Directory
-    "DiffAdd
-    "DiffChange
-    "DiffDelete
-    "DiffText
+    call <SID>X("DiffAdd", "339933", "274727", "")
+    call <SID>X("DiffChange", "", "272747", "")
+    call <SID>X("DiffDelete", "993333", "472727", "")
+    call <SID>X("DiffText", "ffffff", "375737", "bold")
     "ErrorMsg
     call <SID>X("VertSplit", "c2bfa5", "7f7f7f", "reverse")
     call <SID>X("Folded", "ffd700", "4d4d4d", "")
