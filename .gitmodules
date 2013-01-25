@@ -33,3 +33,6 @@
 [submodule "bundle/buffet"]
 	path = bundle/buffet
 	url = https://github.com/sandeepcr529/Buffet.vim.git
+[submodule "bundle/nerdcommenter"]
+	path = bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git

@@ -33,7 +33,8 @@ nmap <leader>a :Ack
 " ,e to fast finding files. just type beginning of a name and hit TAB
 nmap <leader>e :e **/
 
-nmap <leader>b :LustyJuggler<CR>
+"nmap <leader>b :LustyJuggler<CR>
+nmap <leader>b :Bufferlist<CR>
 
 nnoremap <F5> :GundoToggle<CR>
 
