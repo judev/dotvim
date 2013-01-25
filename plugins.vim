@@ -1,9 +1,9 @@
 
-if has("gui_macvim")
-	let g:script_runner_key = '<D-r>'
-else
+"if has("gui_macvim")
+	"let g:script_runner_key = '<D-r>'
+"else
 	let g:script_runner_key = '<F6>'
-endif
+"endif
 
 " nerdcommenter
 " ,/ to invert comment on the current line/selection
@@ -50,4 +50,8 @@ if !exists('g:jv_vimrc_funcs')
 endif
 
 inoremap <tab> <c-r>=InsertTabWrapper()<CR>
+
+let g:html_indent_inctags = "html,body,head,tbody"
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
 
