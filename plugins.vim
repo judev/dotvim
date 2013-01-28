@@ -31,7 +31,19 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 nmap <leader>a :Ack 
 
 " ,e to fast finding files. just type beginning of a name and hit TAB
-nmap <leader>e :e **/
+nmap <leader>e :LustyFilesystemExplorer<CR>
+
+
+" Nerd Tree settings
+nmap <leader>x :NERDTreeToggle<CR>
+
+" Use F1 for Nerd Tree help
+autocmd FileType nerdtree noremap <buffer> <F1> <nop>
+let NERDTreeMapHelp="<F1>"
+
+" Set relativenumber in Nerd Tree buffers
+autocmd FileType nerdtree setlocal relativenumber
+
 
 "nmap <leader>b :LustyJuggler<CR>
 nmap <leader>b :Bufferlist<CR>
@@ -55,4 +67,3 @@ inoremap <tab> <c-r>=InsertTabWrapper()<CR>
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
-
