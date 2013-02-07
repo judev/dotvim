@@ -35,7 +35,10 @@ nmap <leader>e :LustyFilesystemExplorer<CR>
 
 
 " Nerd Tree settings
-nmap <leader>x :NERDTreeToggle<CR>
+nmap <leader>z :NERDTreeFind<CR>
+nmap <leader>x :NERDTreeFocus<CR>
+nmap <leader>X :NERDTreeToggle<CR>
+nmap <leader>c :NERDTreeFromBookmark 
 
 " Use F1 for Nerd Tree help
 autocmd FileType nerdtree noremap <buffer> <F1> <nop>
