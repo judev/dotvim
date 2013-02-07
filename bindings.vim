@@ -33,11 +33,14 @@ set completeopt=menuone,preview
 nnoremap j gj
 nnoremap k gk
 
+" remap redraw from C-l as we're going to override it below
+nmap <leader><C-l> :redraw<CR>
+
 " Easy window navigation
-"nmap <C-h> <C-w>h
+nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
-"nmap <C-l> <C-w>l
+nmap <C-l> <C-w>l
 nmap <leader>h <C-w>j<C-w>|
 nmap <leader>l <C-w>k<C-w>|
 nmap <leader>j <C-w>j<C-w>_
