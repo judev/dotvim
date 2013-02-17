@@ -1,4 +1,6 @@
-let mapleader = "\\"
+"let mapleader = "\\"
+"let mapleader = " "
+map <space> <leader>
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
