@@ -40,12 +40,17 @@ nmap <leader>x :NERDTreeFocus<CR>
 nmap <leader>X :NERDTreeToggle<CR>
 nmap <leader>c :NERDTreeFromBookmark 
 
+" Don't separate directories and files
+let NERDTreeSortOrder=[]
+
 " Use F1 for Nerd Tree help
 autocmd FileType nerdtree noremap <buffer> <F1> <nop>
 let NERDTreeMapHelp="<F1>"
 
 " Set relativenumber in Nerd Tree buffers
-autocmd FileType nerdtree setlocal relativenumber
+if v:version >= 703
+	autocmd FileType nerdtree setlocal relativenumber
+endif
 
 
 "nmap <leader>b :LustyJuggler<CR>
