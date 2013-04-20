@@ -91,6 +91,8 @@ if v:version >= 703
 	set undofile
 endif
 set scrolloff=3
+set sidescroll=1
+set sidescrolloff=15
 set wildmode=longest:list,full
 set smarttab
 set ttyfast
