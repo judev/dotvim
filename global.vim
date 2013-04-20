@@ -113,11 +113,11 @@ set smartcase           " do not ignore if search pattern has CAPS
 
 
 " directory settings
-set backupdir=~/.backup,.
+set backupdir=~/.backup//,.
 if v:version >= 703
-	set undodir=~/.backup,.
+	set undodir=~/.backup//,.
 endif
-set directory=~/.backup,~/tmp,.
+set directory=~/.backup//,~/tmp//,.
 
 
 " folding
