@@ -8,6 +8,10 @@ map Q gq
 "make Y consistent with C and D
 "nnoremap Y y$
 
+" use <leader>d to delete without clobbering yank
+nmap <leader>d "_dd
+vmap <leader>d "_d
+
 " toggle highlight trailing whitespace
 nmap <silent> <leader>s :set nolist!<CR>
 
