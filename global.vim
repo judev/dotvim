@@ -34,6 +34,10 @@ set laststatus=2        " always show the status line
 set listchars=tab:▷⋅,trail:·,eol:$
 set list
 
+" Prevent Vim from clobbering the scrollback buffer. See
+" http://www.shallowsky.com/linux/noaltscreen.html
+set t_ti= t_te=
+
 set sessionoptions-=options " do not store global and local values in a session
 set sessionoptions-=folds " do not store folds
 
@@ -90,9 +94,11 @@ set undolevels=1000
 if v:version >= 703
 	set undofile
 endif
+
 set scrolloff=3
 set sidescroll=1
 set sidescrolloff=15
+
 set wildmode=longest:list,full
 set smarttab
 set ttyfast
