@@ -52,6 +52,9 @@ nmap <leader>l <C-w>k<C-w>|
 nmap <leader>j <C-w>j<C-w>_
 nmap <leader>k <C-w>k<C-w>_
 
+nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
+
 " split window
 nmap <leader>swh       :topleft  vnew<CR>
 nmap <leader>swl       :botright vnew<CR>
