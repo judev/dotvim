@@ -7,7 +7,7 @@
 
 function! s:FixWhitespace(line1,line2)
     let l:save_cursor = getpos(".")
-    silent! execute ':' . a:line1 . ',' . a:line2 . 's/\s\+$//'
+    silent! execute ':' . a:line1 . ',' . a:line2 . 's/\(\|\s\)\+$//'
     call setpos('.', l:save_cursor)
 endfunction
 
