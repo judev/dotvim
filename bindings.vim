@@ -1,5 +1,5 @@
-"let mapleader = "\\"
-"let mapleader = " "
+
+" Map space to leader
 map <space> <leader>
 
 " Don't use Ex mode, use Q for formatting
@@ -8,29 +8,35 @@ map Q gq
 "make Y consistent with C and D
 "nnoremap Y y$
 
+" use <leader>y to yank to system clipboard
+nmap <leader>y "*y
+nmap <leader>Y "*Y
+
 " use <leader>d to delete without clobbering yank
-nmap <leader>d "_dd
+nmap <leader>d "_d
 vmap <leader>d "_d
+
+nnoremap <silent> [<Tab> :tabprev<cr>
+nnoremap <silent> ]<Tab> :tabnext<cr>
+nnoremap <silent> <leader>[ :tabprev<cr>
+nnoremap <silent> <leader>] :tabnext<cr>
+nnoremap <silent> <leader>{ :tabfirst<cr>
+nnoremap <silent> <leader>} :tablast<cr>
 
 " toggle highlight trailing whitespace
 nmap <silent> <leader>s :set nolist!<CR>
 
-" ,. to disable search match highlight
+" <leader>. to disable search match highlight
 nmap <silent> <leader>. :nohlsearch<CR>
+
+" <cr> to disable search match highlight
+nmap <silent> <cr> :nohlsearch<CR>
+" map <cr> back to normal in quickfix buffers
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
 " turn off search highlighting in insert mode
 autocmd InsertEnter * :setlocal nohlsearch
 autocmd InsertLeave * :setlocal hlsearch
-
-" ,e to fast finding files. just type beginning of a name and hit TAB
-nmap <leader>e :e **/
-
-" Make shift-insert work like in Xterm
-map <S-Insert> <MiddleMouse>
-map! <S-Insert> <MiddleMouse>
-
-" ,n to get the next location (compilation errors, grep etC)
-nmap <leader>n :cn<CR>
 
 "set completeopt=menuone,preview,longest
 set completeopt=menuone,preview
@@ -52,33 +58,21 @@ nmap <leader>l <C-w>k<C-w>|
 nmap <leader>j <C-w>j<C-w>_
 nmap <leader>k <C-w>k<C-w>_
 
+" + and - to resize current window
 nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 
 " split window
-nmap <leader>swh       :topleft  vnew<CR>
-nmap <leader>swl       :botright vnew<CR>
-nmap <leader>swk       :topleft  new<CR>
-nmap <leader>swj       :botright new<CR>
-nmap <leader>sw<left>  :topleft  vnew<CR>
-nmap <leader>sw<right> :botright vnew<CR>
-nmap <leader>sw<up>    :topleft  new<CR>
-nmap <leader>sw<down>  :botright new<CR>
-" split buffer
-nmap <leader>sh        :leftabove  vsplit<CR>
-nmap <leader>sl        :rightbelow vsplit<CR>
-nmap <leader>sk        :leftabove  split<CR>
-nmap <leader>sj        :rightbelow split<CR>
-nmap <leader>s<left>   :leftabove  vsplit<CR>
-nmap <leader>s<right>  :rightbelow vsplit<CR>
-nmap <leader>s<up>     :leftabove  split<CR>
-nmap <leader>s<down>   :rightbelow split<CR>
+nmap <leader>wh        :leftabove  vsplit<CR>
+nmap <leader>wl        :rightbelow vsplit<CR>
+nmap <leader>wk        :leftabove  split<CR>
+nmap <leader>wj        :rightbelow split<CR>
 
 " w!! to write as root
 cmap w!! w !sudo tee % >/dev/null
 
-" ,cd to change working directory to current file directory
-nmap <silent> <Leader>cd :cd %:p:h<CR>
+" <leader>cd to change working directory to current file directory
+nmap <silent> <leader>cd :cd %:p:h<CR>
 
 " make paste reformat and indent
 nnoremap P P'[v']=
@@ -102,7 +96,7 @@ endif
 "cnoremap <M-b> <S-Left>
 "cnoremap <M-f> <S-Right>
 
-" Map F1 to Esc in insert mode, expand current work in normal mode
+" Help for current word in normal mode
 function! SophHelp()
   if &buftype=="help" && match( strpart( getline("."), col(".")-1,1), "\\S")<0
     bw
@@ -117,4 +111,10 @@ function! SophHelp()
   endif
 endfunc
 nnoremap <silent> <F1> :call SophHelp()<CR>
+
+" Map F1 to Esc in insert mode
 imap <F1> <Esc>
+
+" make ctrl-l in insert mode insert hash rocket
+imap <c-l> <space>=><space>
+

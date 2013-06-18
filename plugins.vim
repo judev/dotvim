@@ -5,20 +5,20 @@
 	let g:script_runner_key = '<F6>'
 "endif
 
-" nerdcommenter
-" ,/ to invert comment on the current line/selection
-nmap <leader>/ :call NERDComment(0, "invert")<cr>
-vmap <leader>/ :call NERDComment(0, "invert")<cr>
-
 " ,t to show tags window
-let Tlist_Show_Menu=1
-nmap <leader>t :TlistToggle<CR>
+let g:tagbar_autoclose=1
+nmap <leader>t :TagbarToggle<cr>
+
+" <leader>f to open CtrlP
+nmap <leader>f :CtrlP<cr>
+let g:ctrlp_working_path_mode = 'rw'
+let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 
 " yankring
-let g:yankring_replace_n_pkey = '<leader>['
-let g:yankring_replace_n_nkey = '<leader>]'
-" ,y to show the yankring
-nmap <leader>y :YRShow<cr>
+let g:yankring_replace_n_pkey = '<leader>p'
+let g:yankring_replace_n_nkey = '<leader>P'
+" <leader>r to show the yankring
+nmap <leader>r :YRShow<cr>
 
 " Fugitive
 " ,g for Ggrep
@@ -26,13 +26,12 @@ nmap <leader>g :Ggrep
 " avoid proliferation of fugitive buffers (http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/)
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
+" vim-commentary
+nmap <leader>/ gcc
+
 " Ack
 " ,a for Ack
 nmap <leader>a :Ack 
-
-" ,e to fast finding files. just type beginning of a name and hit TAB
-nmap <leader>e :LustyFilesystemExplorer<CR>
-
 
 " Nerd Tree settings
 nmap <leader>z :NERDTreeFind<CR>
@@ -53,25 +52,61 @@ if v:version >= 703
 endif
 
 
-"nmap <leader>b :LustyJuggler<CR>
 nmap <leader>b :Bufferlist<CR>
 
 nnoremap <F5> :GundoToggle<CR>
 
-if !exists('g:jv_vimrc_funcs')
-    let g:jv_vimrc_funcs = 1
-	function InsertTabWrapper()
-		let col = col('.') - 1 
-		if !col || getline('.')[col - 1] !~ '\k'
-			return "\<tab>"
-		else
-			return "\<c-p>"
-		endif
-	endfunction
-endif
-
-inoremap <tab> <c-r>=InsertTabWrapper()<CR>
-
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" OPEN FILES IN DIRECTORY OF CURRENT FILE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>e :edit %%
+map <leader>v :view %%
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" RENAME CURRENT FILE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" EXTRACT VARIABLE (SKETCHY)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! ExtractVariable()
+    let name = input("Variable name: ")
+    if name == ''
+        return
+    endif
+    " Enter visual mode (not sure why this is needed since we're already in
+    " visual mode anyway)
+    normal! gv
+
+    " Replace selected text with the variable name
+    exec "normal c" . name
+    " Define the variable on the line above
+    exec "normal! O" . name . " = "
+    " Paste the original selected text to be the variable value
+    normal! $p
+	if (&filetype == 'php' || &filetype == 'javascript' || &filetype == 'c')
+		normal! A;
+	endif
+endfunction
+vnoremap <leader>x :call ExtractVariable()<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Unit Testing
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+hi GreenBar term=reverse ctermfg=black ctermbg=green guifg=white guibg=green
+hi RedBar   term=reverse ctermfg=white ctermbg=red guifg=white guibg=red
+

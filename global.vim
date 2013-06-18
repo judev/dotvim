@@ -61,10 +61,17 @@ set gfn=Meslo\ LG\ S\ DZ:h13
 " highlight spell errors
 hi SpellErrors guibg=red guifg=black ctermbg=red ctermfg=black
 
-set statusline=%(%l/%L\ %c%V\ %P%)\ %#warningmsg#%*%=%-h%m%r\ %t%*\ 
+" Returns true if paste mode is enabled
+function! HasPaste()
+	if &paste
+		return '[paste]'
+	en
+	return ''
+endfunction
+
+set statusline=%(%l/%L\ %c%V\ %P%)\ %#warningmsg#%*%=%-h\ %{HasPaste()}\ %m%r\ %t%*\ 
 
 " behaviour
-
                         " ignore these files when completing names and in
                         " explorer
 set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif
@@ -138,7 +145,16 @@ set nofoldenable        "dont fold by default "
 set pastetoggle=<F2>
 set tags=tags;/
 
-let g:LustyJugglerShowKeys = 'a'
+
+augroup vimrcEx
+	" clear all autocmds in the group
+	autocmd!
+
+	" jump to last position in file when opening
+	autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
+augroup END
+
 
 " extended '%' mapping for if/then/else/end etc
 runtime macros/matchit.vim
@@ -176,5 +192,3 @@ endfunction
 if has("digraphs")
     digraph ., 8230    " ellipsis (…)
 endif
-
-

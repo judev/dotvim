@@ -14,3 +14,5 @@ endfunction
 
 command! Halfscreen :call Halfscreen()
 
+call Fullscreen()
+
