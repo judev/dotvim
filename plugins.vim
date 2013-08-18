@@ -5,10 +5,6 @@
 	let g:script_runner_key = '<F6>'
 "endif
 
-" ,t to show tags window
-let g:tagbar_autoclose=1
-nmap <leader>t :TagbarToggle<cr>
-
 " <leader>f to open CtrlP
 nmap <leader>f :CtrlP<cr>
 let g:ctrlp_working_path_mode = 'rw'

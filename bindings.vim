@@ -16,12 +16,9 @@ nmap <leader>Y "*Y
 nmap <leader>d "_d
 vmap <leader>d "_d
 
+" tab navigation with [Tab and ]Tab
 nnoremap <silent> [<Tab> :tabprev<cr>
 nnoremap <silent> ]<Tab> :tabnext<cr>
-nnoremap <silent> <leader>[ :tabprev<cr>
-nnoremap <silent> <leader>] :tabnext<cr>
-nnoremap <silent> <leader>{ :tabfirst<cr>
-nnoremap <silent> <leader>} :tablast<cr>
 
 " toggle highlight trailing whitespace
 nmap <silent> <leader>s :set nolist!<CR>
@@ -33,6 +30,8 @@ nmap <silent> <leader>. :nohlsearch<CR>
 nmap <silent> <cr> :nohlsearch<CR>
 " map <cr> back to normal in quickfix buffers
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+" map <cr> back to normal in command-line window
+autocmd CmdwinEnter [:>] nnoremap <buffer> <CR> <CR>
 
 " turn off search highlighting in insert mode
 autocmd InsertEnter * :setlocal nohlsearch
