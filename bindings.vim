@@ -9,12 +9,11 @@ map Q gq
 "nnoremap Y y$
 
 " use <leader>y to yank to system clipboard
-nmap <leader>y "*y
-nmap <leader>Y "*Y
+map <leader>y "*y
+map <leader>Y "*Y
 
 " use <leader>d to delete without clobbering yank
-nmap <leader>d "_d
-vmap <leader>d "_d
+map <leader>d "_d
 
 " tab navigation with [Tab and ]Tab
 nnoremap <silent> [<Tab> :tabprev<cr>
@@ -36,9 +35,6 @@ autocmd CmdwinEnter [:>] nnoremap <buffer> <CR> <CR>
 " turn off search highlighting in insert mode
 autocmd InsertEnter * :setlocal nohlsearch
 autocmd InsertLeave * :setlocal hlsearch
-
-"set completeopt=menuone,preview,longest
-set completeopt=menuone,preview
 
 " make j and k work as expected over wrapped lines
 nnoremap j gj
