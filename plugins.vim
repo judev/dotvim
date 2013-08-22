@@ -106,3 +106,18 @@ vnoremap <leader>x :call ExtractVariable()<cr>
 hi GreenBar term=reverse ctermfg=black ctermbg=green guifg=white guibg=green
 hi RedBar   term=reverse ctermfg=white ctermbg=red guifg=white guibg=red
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MULTIPURPOSE TAB KEY
+" Indent if we're at the beginning of a line. Else, do completion.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
+
