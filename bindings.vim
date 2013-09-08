@@ -16,8 +16,8 @@ map <leader>Y "*Y
 map <leader>d "_d
 
 " tab navigation with [Tab and ]Tab
-nnoremap <silent> [<Tab> :tabprev<cr>
-nnoremap <silent> ]<Tab> :tabnext<cr>
+nnoremap <silent> [<Tab> gT
+nnoremap <silent> ]<Tab> gt
 
 " toggle highlight trailing whitespace
 nmap <silent> <leader>s :set nolist!<CR>
