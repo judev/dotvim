@@ -81,15 +81,17 @@ if exists("g:isDarwin") && g:isDarwin
 endif
 
 " command mode shortcuts
-"cnoremap <C-x> <C-a>
-"cnoremap <C-a> <Home>
-"cnoremap <C-e> <End>
-"cnoremap <C-p> <Up>
-"cnoremap <C-n> <Down>
-"cnoremap <C-b> <Left>
-"cnoremap <C-f> <Right>
-"cnoremap <M-b> <S-Left>
-"cnoremap <M-f> <S-Right>
+
+" remap normal c-a to c-x (expands filename wildcards)
+cnoremap <C-x> <C-a>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <M-b> <S-Left>
+cnoremap <M-f> <S-Right>
 
 " Help for current word in normal mode
 function! SophHelp()
