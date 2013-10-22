@@ -121,3 +121,25 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Add selecta mapping if installed (https://github.com/garybernhardt/selecta)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if executable("selecta")
+	" Run a given vim command on the results of fuzzy selecting from a given shell
+	" command. See usage below.
+	function! SelectaCommand(choice_command, vim_command)
+		try
+			silent! exec a:vim_command . " " . system(a:choice_command . " | selecta")
+		catch /Vim:Interrupt/
+			" Swallow the ^C so that the redraw below happens; otherwise there will be
+			" leftovers from selecta on the screen
+		endtry
+		redraw!
+	endfunction
+
+	" Fuzzy select project files. Open the selected file with :e.
+	" Selecting seems to work better for me with paths sorted by length, ascending.
+	map <leader>f :call SelectaCommand("git ls-files -cdmo \| perl -e 'print sort {length $a <=> length $b} <>'", ":e")<cr>
+endif
+
