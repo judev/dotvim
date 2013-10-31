@@ -147,3 +147,16 @@ if executable("selecta")
 	map <leader>f :call SelectaCommand("git ls-files -cdmo \| perl -e 'print sort {length $a <=> length $b} <>'", ":e")<cr>
 endif
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Open a Scratch buffer with contents of templates/scratch.{filetype}
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! ScratchTemplate(filetype)
+	exe "Scratch"
+	0,$d
+	exe "set filetype=" . a:filetype
+	exe "read " . expand('<sfile>:p:h') . "/templates/scratch." . a:filetype
+	0d
+endfunction
+
+command! -nargs=1 TScratch call ScratchTemplate(<f-args>)
+
