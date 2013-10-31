@@ -52,8 +52,6 @@ if v:version >= 703
 endif
 
 
-nmap <leader>b :Bufferlist<CR>
-
 nnoremap <F5> :GundoToggle<CR>
 
 let g:html_indent_inctags = "html,body,head,tbody"
@@ -132,9 +130,14 @@ inoremap <s-tab> <c-n>
 if executable("selecta")
 	" Run a given vim command on the results of fuzzy selecting from a given shell
 	" command. See usage below.
-	function! SelectaCommand(choice_command, vim_command)
+	" Optional 3rd parameter is passed as stdin to choice_command.
+	function! SelectaCommand(choice_command, vim_command, ...)
 		try
-			silent! exec a:vim_command . " " . system(a:choice_command . " | selecta")
+			if a:0 > 0
+				silent! exec a:vim_command . " " . system(a:choice_command . " | selecta", a:1)
+			else
+				silent! exec a:vim_command . " " . system(a:choice_command . " | selecta")
+			endif
 		catch /Vim:Interrupt/
 			" Swallow the ^C so that the redraw below happens; otherwise there will be
 			" leftovers from selecta on the screen
@@ -144,7 +147,17 @@ if executable("selecta")
 
 	" Fuzzy select project files. Open the selected file with :e.
 	" Selecting seems to work better for me with paths sorted by length, ascending.
-	map <leader>f :call SelectaCommand("git ls-files -cdmo \| perl -e 'print sort {length $a <=> length $b} <>'", ":e")<cr>
+	noremap <leader>f :call SelectaCommand("git ls-files -cdmo \| perl -e 'print sort {length $a <=> length $b} <>'", ":e")<cr>
+
+	" Fuzzy select buffers using selecta
+	function! SelectaBuffers(vim_command)
+		redir => l:buffers
+			silent buffers
+		redir END
+		silent call SelectaCommand("sed -n 's/.*\"\\(.*\\)\".*/\\1/p'", ":b", l:buffers)
+	endfunction
+
+	noremap <leader>b :call SelectaBuffers(":e")<cr>
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
