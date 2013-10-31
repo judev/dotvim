@@ -154,10 +154,10 @@ if executable("selecta")
 		redir => l:buffers
 			silent buffers
 		redir END
-		silent call SelectaCommand("sed -n 's/.*\"\\(.*\\)\".*/\\1/p'", ":b", l:buffers)
+		silent call SelectaCommand("sed -n 's/.*\"\\(.*\\)\".*/\\1/p'", a:vim_command, l:buffers)
 	endfunction
 
-	noremap <leader>b :call SelectaBuffers(":e")<cr>
+	noremap <leader>b :call SelectaBuffers(":b")<cr>
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
