@@ -26,6 +26,10 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 nmap <leader>/ gcc
 
 " Ack
+" Use ag if available
+if executable("ag")
+	let g:ackprg = 'ag --nogroup --nocolor --column'
+endif
 " ,a for Ack
 nmap <leader>a :Ack 
 
