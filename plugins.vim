@@ -10,6 +10,8 @@ nmap <leader>f :CtrlP<cr>
 let g:ctrlp_working_path_mode = 'rw'
 let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 
+let g:vim_dir = expand('<sfile>:p:h')
+
 " yankring
 let g:yankring_replace_n_pkey = '<leader>p'
 let g:yankring_replace_n_nkey = '<leader>P'
@@ -167,7 +169,7 @@ function! ScratchTemplate(filetype)
 	exe "Scratch"
 	0,$d
 	exe "set filetype=" . a:filetype
-	exe "read " . expand('<sfile>:p:h') . "/templates/scratch." . a:filetype
+	exe "read " . g:vim_dir . "/templates/scratch." . a:filetype
 	0d
 endfunction
 
