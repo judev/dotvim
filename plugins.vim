@@ -5,11 +5,6 @@
 	let g:script_runner_key = '<F6>'
 "endif
 
-" <leader>f to open CtrlP
-nmap <leader>f :CtrlP<cr>
-let g:ctrlp_working_path_mode = 'rw'
-let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
-
 let g:vim_dir = expand('<sfile>:p:h')
 
 
