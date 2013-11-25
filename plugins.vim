@@ -12,11 +12,6 @@ let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 
 let g:vim_dir = expand('<sfile>:p:h')
 
-" yankring
-let g:yankring_replace_n_pkey = '<leader>p'
-let g:yankring_replace_n_nkey = '<leader>P'
-" <leader>r to show the yankring
-nmap <leader>r :YRShow<cr>
 
 " Fugitive
 " ,g for Ggrep
