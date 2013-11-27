@@ -6,14 +6,16 @@ set noeol
 set binary
 
 " presentation settings
-set number
 if v:version >= 703
+	set nonumber
 	set relativenumber
 
 	function! NumberToggle()
 		if(&relativenumber == 1)
+			set number
 			set norelativenumber
 		else
+			set nonumber
 			set relativenumber
 		endif
 	endfunc
