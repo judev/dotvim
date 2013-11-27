@@ -260,7 +260,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("MoreMsg", "2e8b57", "", "")
     call <SID>X("NonText", "005f00", "", "bold")
     call <SID>X("Question", "00ff7f", "", "")
-    call <SID>X("SpecialKey", "005f00", "", "")
+    call <SID>X("SpecialKey", "004c00", "", "")
     call <SID>X("StatusLine", "c2bfa5", "000000", "reverse")
     call <SID>X("StatusLineNC", "c2bfa5", "7f7f7f", "reverse")
     call <SID>X("Title", "cd5c5c", "", "")
@@ -287,6 +287,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
 	if version >= 700 " Vim 7.x specific colors
 		call <SID>X("CursorLine", "", "313131", "none")
+		call <SID>X("CursorColumn", "", "313131", "none")
 		"hi CursorColumn   guifg=NONE        guibg=#121212     gui=NONE
 		"call <SID>X("MatchParen", "181818", "dfffdf", "")
 		call <SID>X("MatchParen", "afaf5f", "4e4e4e", "bold")
