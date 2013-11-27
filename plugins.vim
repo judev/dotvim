@@ -29,7 +29,6 @@ nmap <leader>a :Ack
 nmap <leader>z :NERDTreeFind<CR>
 nmap <leader>x :NERDTreeFocus<CR>
 nmap <leader>X :NERDTreeToggle<CR>
-nmap <leader>c :NERDTreeFromBookmark 
 
 " Don't separate directories and files
 let NERDTreeSortOrder=[]

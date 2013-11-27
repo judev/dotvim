@@ -62,15 +62,23 @@ set gfn=Meslo\ LG\ S\ DZ:h13
 " highlight spell errors
 hi SpellErrors guibg=red guifg=black ctermbg=red ctermfg=black
 
-" Returns true if paste mode is enabled
-function! HasPaste()
+" Returns statusline text for paste mode
+function! StatusLinePaste()
 	if &paste
-		return '[paste]'
-	en
+		return ' [paste]'
+	endif
 	return ''
 endfunction
 
-set statusline=%(%l/%L\ %c%V\ %P%)\ %#warningmsg#%*%=%-h\ %{HasPaste()}\ %m%r\ %t%*\ 
+" Returns statusline text for clipboard=unnamed
+function! StatusLineUnnamed()
+	if &clipboard == 'unnamed'
+		return ' [clipboard]'
+	endif
+	return ''
+endfunction
+
+set statusline=%(%l/%L\ %c%V\ %P%)%{StatusLinePaste()}%{StatusLineUnnamed()}\ %#warningmsg#%*%=%-h\ %m%r\ %t%*\ 
 
 " behaviour
                         " ignore these files when completing names and in
@@ -141,9 +149,6 @@ set foldlevel=9
 set nofoldenable        "dont fold by default "
 
 
-"set clipboard=unnamed
-
-set pastetoggle=<F2>
 set tags=tags;/
 
 

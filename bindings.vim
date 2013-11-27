@@ -15,6 +15,44 @@ map <leader>Y "*Y
 " use <leader>d to delete without clobbering yank
 map <leader>d "_d
 
+nmap <silent> <f2> :call TogglePasteMode()<cr>
+nmap <silent> <f3> :call ToggleUnnamedClipboard()<cr>
+
+nmap <silent> <C-x> :set cursorline! \| set cursorcolumn!<cr>
+
+" Just like windo, but restore the current window when done.
+function! WinDo(command)
+  let currwin=winnr()
+  execute 'windo ' . a:command
+  execute currwin . 'wincmd w'
+endfunction
+command! -nargs=+ -complete=command Windo call WinDo(<q-args>)
+
+" Just like Windo, but disable all autocommands for super fast processing.
+command! -nargs=+ -complete=command Windofast noautocmd call WinDo(<q-args>)
+
+" Just like bufdo, but restore the current buffer when done.
+function! BufDo(command)
+  let currBuff=bufnr("%")
+  execute 'bufdo ' . a:command
+  execute 'buffer ' . currBuff
+endfunction
+command! -nargs=+ -complete=command Bufdo call BufDo(<q-args>)
+
+function! TogglePasteMode()
+	set paste!
+	Windofast redrawstatus
+endfunction
+
+function! ToggleUnnamedClipboard()
+	if &clipboard == 'unnamed'
+		set clipboard=
+	else
+		set clipboard=unnamed
+	endif
+	Windofast redrawstatus
+endfunction
+
 " tab navigation with [Tab and ]Tab
 nnoremap <silent> [<Tab> gT
 nnoremap <silent> ]<Tab> gt
