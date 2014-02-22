@@ -258,9 +258,9 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     "LineNr
     call <SID>X("ModeMsg", "daa520", "", "")
     call <SID>X("MoreMsg", "2e8b57", "", "")
-    call <SID>X("NonText", "005f00", "", "bold")
+    call <SID>X("NonText", "444444", "", "bold")
     call <SID>X("Question", "00ff7f", "", "")
-    call <SID>X("SpecialKey", "004c00", "", "")
+    call <SID>X("SpecialKey", "444444", "", "")
     call <SID>X("StatusLine", "c2bfa5", "000000", "reverse")
     call <SID>X("StatusLineNC", "c2bfa5", "7f7f7f", "reverse")
     call <SID>X("Title", "cd5c5c", "", "")
