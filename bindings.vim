@@ -140,6 +140,17 @@ cnoremap <C-e> <End>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" arg list management
+" http://blog.tommcdo.com/2014/03/manage-small-groups-of-related-files.html
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>al :arglocal<CR>
+nnoremap <leader>aa :argadd % <Bar> next<CR>
+nnoremap <leader>as :arglocal! %<CR>
+nnoremap <leader>ad :<C-R>=argidx()+1<CR>argdelete<CR>
+nnoremap <leader>ac :argument<CR>
+
+
 " Help for current word in normal mode
 function! SophHelp()
   if &buftype=="help" && match( strpart( getline("."), col(".")-1,1), "\\S")<0

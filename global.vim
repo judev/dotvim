@@ -78,7 +78,20 @@ function! StatusLineUnnamed()
 	return ''
 endfunction
 
-set statusline=%(%l/%L\ %c%V\ %P%)%{StatusLinePaste()}%{StatusLineUnnamed()}\ %#warningmsg#%*%=%-h\ %m%r\ %t%*\ 
+" Shows position of current buffer in arg list
+function! CodeForStatusLineArglistIndicator()
+    return '%{argc()>1?(" [".repeat("-",argidx()).(expand("%")==argv(argidx())?"+":"~").repeat("-",argc()-argidx()-1)."]"):""}'
+endfunction
+
+function! CodeForStatusLine()
+	let l:s = ''
+	let l:s .= '%(%l/%L %c%V %P%)'
+	let l:s .= CodeForStatusLineArglistIndicator()
+	let l:s .= '%{StatusLinePaste()}%{StatusLineUnnamed()} %#warningmsg#%*%=%-h %m%r %t%* '
+	return l:s
+endfunction
+
+set statusline=%!CodeForStatusLine()
 
 " behaviour
                         " ignore these files when completing names and in
