@@ -1,29 +1,15 @@
 
-"if has("gui_macvim")
-	"let g:script_runner_key = '<D-r>'
-"else
-	let g:script_runner_key = '<F6>'
-"endif
 
-let g:vim_dir = expand('<sfile>:p:h')
-
-
-" Fugitive
-" ,g for Ggrep
-nmap <leader>g :Ggrep 
 " avoid proliferation of fugitive buffers (http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/)
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " vim-commentary
 nmap <leader>/ gcc
 
-" Ack
 " Use ag if available
 if executable("ag")
 	let g:ackprg = 'ag --nogroup --nocolor --column'
 endif
-" ,a for Ack
-nmap <leader>a :Ack 
 
 " Nerd Tree settings
 nmap <leader>z :NERDTreeFind<CR>
@@ -42,12 +28,37 @@ if v:version >= 703
 	autocmd FileType nerdtree setlocal relativenumber
 endif
 
-
-nnoremap <F5> :GundoToggle<CR>
-
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
+
+let g:netrw_altv = 1
+" use directory listing cache only remotely
+let g:netrw_fastbrowse = 1
+" default to tree listing style
+let g:netrw_liststyle = 3
+" remove default of putting directories first
+let g:netrw_sort_sequence = "\<core\%(\.\d\+\)\=\>,\.h$,\.c$,\.cpp$,\~\=\*$,*,\.o$,\.obj$,\.info$,\.swp$,\.bak$,\~$"
+
+:command! -range=% -nargs=0 T2S execute "<line1>,<line2>s/^\\t\\+/\\=substitute(submatch(0), '\\t', repeat(' ', ".&ts."), 'g')"
+:command! -range=% -nargs=0 S2T execute "<line1>,<line2>s/^\\( \\{".&ts."\\}\\)\\+/\\=substitute(submatch(0), ' \\{".&ts."\\}', '\\t', 'g')"
+
+function! Textwrap()
+	setlocal wrap
+	setlocal linebreak
+	setlocal nolist
+	setlocal textwidth=0
+	setlocal wrapmargin=0
+endfunction
+
+command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
+function! QuickfixFilenames()
+	let buffer_numbers = {}
+	for quickfix_item in getqflist()
+		let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+	endfor
+	return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " OPEN FILES IN DIRECTORY OF CURRENT FILE
@@ -187,6 +198,7 @@ function! ReformatBraces()
 	FixWhitespace
 	g/^[\t ]*{/normal kJ
 endfunction
+" }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Regenerate tags
@@ -199,4 +211,71 @@ function! CTags()
 	endif
 endfunction
 set tags=.tags
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Just like windo, but restore the current window when done.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! WinDo(command)
+  let currwin=winnr()
+  execute 'windo ' . a:command
+  execute currwin . 'wincmd w'
+endfunction
+command! -nargs=+ -complete=command Windo call WinDo(<q-args>)
+
+" Just like Windo, but disable all autocommands for super fast processing.
+command! -nargs=+ -complete=command Windofast noautocmd call WinDo(<q-args>)
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Just like bufdo, but restore the current buffer when done.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! BufDo(command)
+  let currBuff=bufnr("%")
+  execute 'bufdo ' . a:command
+  execute 'buffer ' . currBuff
+endfunction
+command! -nargs=+ -complete=command Bufdo call BufDo(<q-args>)
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Toggle paste and redraw statusline
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! TogglePasteMode()
+	set paste!
+	Windofast redrawstatus
+endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Toggle unnamed clipboard and redraw statusline
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! ToggleUnnamedClipboard()
+	if &clipboard == 'unnamed'
+		set clipboard=
+	else
+		set clipboard=unnamed
+	endif
+	Windofast redrawstatus
+endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Help for current word
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! SophHelp()
+  if &buftype=="help" && match( strpart( getline("."), col(".")-1,1), "\\S")<0
+    bw
+  else
+    try
+      exec "help ".expand("<cWORD>")
+    catch /:E149:\|:E661:/
+      " E149 no help for <subject>
+      " E661 no <language> help for <subject>
+		try
+			exec "help ".expand("<cword>")
+		catch /:E149:\|:E661:/
+		" E149 no help for <subject>
+		" E661 no <language> help for <subject>
+			exec "normal K"
+		endtry
+	endtry
+  endif
+endfunc
+
 
