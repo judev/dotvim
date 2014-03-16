@@ -95,10 +95,11 @@ nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
-nmap <leader>h <C-w>j<C-w>|
-nmap <leader>l <C-w>k<C-w>|
+" Switch and maximise windows
+nmap <leader>h <C-w>h<C-w>\|
 nmap <leader>j <C-w>j<C-w>_
 nmap <leader>k <C-w>k<C-w>_
+nmap <leader>l <C-w>l<C-w>\|
 
 " + and - to resize current window
 nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
