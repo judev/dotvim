@@ -67,6 +67,10 @@ endfunction
 nnoremap <silent> [<Tab> gT
 nnoremap <silent> ]<Tab> gt
 
+" swap parameters with [, and ],
+nmap ], <Plug>ForwardSwapParams
+nmap [, <Plug>BackwardSwapParams
+
 " toggle highlight trailing whitespace
 nmap <silent> <leader>s :set nolist!<CR>
 
