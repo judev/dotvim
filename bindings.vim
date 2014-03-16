@@ -28,6 +28,7 @@ cnoremap $d <cr>:d<cr>'s
 
 nmap <silent> <f2> :call TogglePasteMode()<cr>
 nmap <silent> <f3> :call ToggleUnnamedClipboard()<cr>
+nmap <silent> <f4> :call CTags()<cr>
 
 " Just like windo, but restore the current window when done.
 function! WinDo(command)

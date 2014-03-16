@@ -179,3 +179,15 @@ endfunction
 
 command! -nargs=1 TScratch call ScratchTemplate(<f-args>)
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Regenerate tags
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! CTags()
+	if exists(':Dispatch') == 2
+		Dispatch! ctags -f .tags
+	else
+		exec system("ctags -f .tags 2>/dev/null")
+	endif
+endfunction
+set tags=.tags
+
