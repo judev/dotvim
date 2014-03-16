@@ -131,14 +131,13 @@ if exists("g:isDarwin") && g:isDarwin
 	nnoremap <MiddleMouse> <Nop>
 endif
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " command mode shortcuts
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " remap normal c-a to c-x (expands filename wildcards)
 cnoremap <C-x> <C-a>
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
+" readline-inspired bindings now included by vim-rsi plugin
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " arg list management
