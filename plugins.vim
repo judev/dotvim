@@ -180,6 +180,15 @@ endfunction
 command! -nargs=1 TScratch call ScratchTemplate(<f-args>)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Reformat C-style language to my preferred style (open brace on same line as
+" if / for / etc)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! ReformatBraces()
+	FixWhitespace
+	g/^[\t ]*{/normal kJ
+endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Regenerate tags
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CTags()
