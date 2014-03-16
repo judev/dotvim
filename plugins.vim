@@ -152,12 +152,27 @@ if executable("selecta")
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Scratch buffer editing
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+function! ScratchEdit(cmd, options)
+	exe a:cmd tempname()
+	setl buftype=nofile bufhidden=wipe nobuflisted
+	if !empty(a:options) | exe 'setl' a:options | endif
+endfunction
+
+command! -bar -nargs=* Sedit call ScratchEdit('edit', <q-args>)
+command! -bar -nargs=* Ssplit call ScratchEdit('split', <q-args>)
+command! -bar -nargs=* Svsplit call ScratchEdit('vsplit', <q-args>)
+command! -bar -nargs=* Stabedit call ScratchEdit('tabe', <q-args>)
+command! -bar -nargs=* Scratch call ScratchEdit('vsplit', <q-args>)
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Open a Scratch buffer with contents of templates/scratch.{filetype}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! ScratchTemplate(filetype)
-	exe "Scratch"
+	call ScratchEdit('edit', 'ft='.a:filetype)
 	0,$d
-	exe "set filetype=" . a:filetype
 	exe "read " . g:vim_dir . "/templates/scratch." . a:filetype
 	0d
 endfunction
