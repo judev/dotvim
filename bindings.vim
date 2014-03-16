@@ -12,8 +12,13 @@ map Q gq
 map <leader>y "*y
 map <leader>Y "*Y
 
-" use <leader>d to delete without clobbering yank
+" use <leader>d to delete without clobbering previous yank/delete
 map <leader>d "_d
+map <leader>D "_D
+" likewise <leader>c
+map <leader>c "_c
+map <leader>C "_C
+
 
 nmap <silent> <f2> :call TogglePasteMode()<cr>
 nmap <silent> <f3> :call ToggleUnnamedClipboard()<cr>
