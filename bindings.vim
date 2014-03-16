@@ -19,6 +19,12 @@ map <leader>D "_D
 map <leader>c "_c
 map <leader>C "_C
 
+nnoremap / ms/
+nnoremap ? ms?
+
+cnoremap $t <cr>:t's<cr>
+cnoremap $m <cr>:m's<cr>
+cnoremap $d <cr>:d<cr>'s
 
 nmap <silent> <f2> :call TogglePasteMode()<cr>
 nmap <silent> <f3> :call ToggleUnnamedClipboard()<cr>
