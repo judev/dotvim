@@ -104,12 +104,17 @@ cnoremap <C-x> <C-a>
 " arg list management
 " http://blog.tommcdo.com/2014/03/manage-small-groups-of-related-files.html
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>al :arglocal<CR>
+" Make a window-local copy of args. The execute trick is so it always copies
+" current rather than using the args vim was launched with
+nnoremap <leader>al :execute "arglocal " . join(argv(), " ")<CR>
+" Add current file to args
 nnoremap <leader>aa :argadd % <Bar> next<CR>
+" Start a new args list containing just the current file
 nnoremap <leader>as :arglocal! %<CR>
-nnoremap <leader>ad :<C-R>=argidx()+1<CR>argdelete<CR>
+" Remove the current file from the args list and move to next
+nnoremap <leader>ad :<C-R>=argidx()+1<CR>argdelete<CR>:<C-R>=min([argc(), argidx() + 1])<CR>argument<CR>
+" Return to the current file
 nnoremap <leader>ac :argument<CR>
-
 
 " Map F1 to Esc in insert mode
 imap <F1> <Esc>

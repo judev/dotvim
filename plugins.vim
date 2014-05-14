@@ -51,6 +51,9 @@ function! Textwrap()
 	setlocal wrapmargin=0
 endfunction
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Qargs - Copy Quickfix list to args
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
 function! QuickfixFilenames()
 	let buffer_numbers = {}
@@ -198,7 +201,7 @@ function! ReformatBraces()
 	FixWhitespace
 	g/^[\t ]*{/normal kJ
 endfunction
-" }
+" } " << commented brace fixes syntax highlighting below here.
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Regenerate tags
