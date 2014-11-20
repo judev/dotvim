@@ -45,3 +45,9 @@
 [submodule "bundle/vim-husk"]
 	path = bundle/vim-husk
 	url = https://github.com/bruno-/vim-husk.git
+[submodule "bundle/vim-twig"]
+	path = bundle/vim-twig
+	url = https://github.com/evidens/vim-twig.git
+[submodule "bundle/scss-syntax"]
+	path = bundle/scss-syntax
+	url = https://github.com/cakebaker/scss-syntax.vim.git
