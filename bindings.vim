@@ -38,6 +38,12 @@ let g:script_runner_key = '<F6>'
 nnoremap <silent> [<Tab> gT
 nnoremap <silent> ]<Tab> gt
 
+" open new tab with <leader><Tab>
+nnoremap <leader><Tab> :tabnew<cr>:
+
+" close tab with <leader><S-Tab>
+nnoremap <leader><S-Tab> :tabclose<cr>
+
 " swap parameters with [, and ],
 nmap ], <Plug>ForwardSwapParams
 nmap [, <Plug>BackwardSwapParams
