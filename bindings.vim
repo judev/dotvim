@@ -48,8 +48,8 @@ nnoremap <leader><S-Tab> :tabclose<cr>
 nmap ], <Plug>ForwardSwapParams
 nmap [, <Plug>BackwardSwapParams
 
-" toggle highlight trailing whitespace
-nmap <silent> <leader>s :set nolist!<CR>
+nmap <leader>> <Plug>PHPSubscriptToProperty
+nmap <leader>[ <Plug>PHPPropertyToSubscript
 
 " <cr> to disable search match highlight
 nmap <silent> <cr> :nohlsearch<CR>
