@@ -52,6 +52,23 @@ function! Textwrap()
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" <leader>_ Toggle iskeyword contain or not contain '_'
+" <leader>- Toggle iskeyword contain or not contain '-'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>_ :call <SID>ToggleIsKeyword('_')<CR>
+nnoremap <leader>- :call <SID>ToggleIsKeyword('-')<CR>
+
+function! s:ToggleIsKeyword(char)
+  if stridx(&iskeyword, ','.a:char) < 0
+    exec 'setlocal iskeyword+=' . a:char
+    echo '&iskeyword now contains "' . a:char . '"'
+  else
+    exec 'setlocal iskeyword-=' . a:char
+    echo '&iskeyword no longer contains "' . a:char . '"'
+  endif
+endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PHP copy __construct parameters to $this assignment
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 command! -nargs=0 PHPConstruct :call <SID>PHP__ConstructArgs()
