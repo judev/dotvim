@@ -52,6 +52,15 @@ function! Textwrap()
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PHP copy __construct parameters to $this assignment
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+command! -nargs=0 PHPConstruct :call <SID>PHP__ConstructArgs()
+
+function! s:PHP__ConstructArgs()
+  normal ?__construct?ewyi(o":s/ = [^ ,]\+//ge:s/\$\([a-z0-9_]\+\)/$this->\1 = $\1;/ge:s/, /\r/ge=i{
+endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Qargs - Copy Quickfix list to args
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
