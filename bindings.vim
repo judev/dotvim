@@ -23,9 +23,9 @@ map <leader>C "_C
 nnoremap / ms/
 nnoremap ? ms?
 
-cnoremap $t <cr>:t's<cr>
-cnoremap $m <cr>:m's<cr>
-cnoremap $d <cr>:d<cr>'s
+cnoremap §t <cr>:t's<cr>
+cnoremap §m <cr>:m's<cr>
+cnoremap §d <cr>:d<cr>'s
 
 nnoremap <silent> <f1> :call SophHelp()<cr>
 nmap <silent> <f2> :call TogglePasteMode()<cr>
