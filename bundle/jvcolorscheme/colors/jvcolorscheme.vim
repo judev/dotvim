@@ -276,6 +276,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("Comment", "87ceeb", "", "")
     call <SID>X("Constant", "ffa0a0", "", "")
     call <SID>X("Identifier", "87ffaf", "", "none")
+    call <SID>X("phpStaticClasses", "ffffff", "", "none")
     call <SID>X("Statement", "afaf5f", "", "bold")
     call <SID>X("PreProc", "cd5c5c", "", "")
     call <SID>X("Type", "afaf5f", "", "bold")
@@ -296,6 +297,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 		call <SID>X("Search", "dfffdf", "4e4e4e", "")
 	endif
 
+    call <SID>X("htmlItalic", "ffffff", "272727", "none,underline")
     " delete functions {{{
     delf <SID>X
     delf <SID>rgb
