@@ -43,16 +43,16 @@ set showmatch           " Show matching brackets.
 set numberwidth=3       " number of columns for line numbers
 
 if v:version >= 703
-	set nonumber
 	set relativenumber
+	set number
 
 	function! NumberToggle()
 		if(&relativenumber == 1)
-			set number
 			set norelativenumber
+			set number
 		else
-			set nonumber
 			set relativenumber
+			set number
 		endif
 	endfunc
 
