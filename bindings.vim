@@ -7,7 +7,7 @@ nnoremap j gj
 nnoremap k gk
 
 "make Y consistent with C and D
-"nnoremap Y y$
+nnoremap Y y$
 
 " use <leader>y to yank to system clipboard
 map <leader>y "*y
