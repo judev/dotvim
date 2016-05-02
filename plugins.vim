@@ -82,11 +82,11 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
 function! QuickfixFilenames()
-	let buffer_numbers = {}
-	for quickfix_item in getqflist()
-		let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
-	endfor
-	return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+  let buffer_numbers = {}
+  for quickfix_item in getqflist()
+    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+  endfor
+  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -100,36 +100,36 @@ map <leader>v :view %%
 " RENAME CURRENT FILE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! RenameFile()
-    let old_name = expand('%')
-    let new_name = input('New file name: ', expand('%'), 'file')
-    if new_name != '' && new_name != old_name
-        exec ':saveas ' . new_name
-        exec ':silent !rm ' . old_name
-        redraw!
-    endif
+  let old_name = expand('%')
+  let new_name = input('New file name: ', expand('%'), 'file')
+  if new_name != '' && new_name != old_name
+    exec ':saveas ' . new_name
+    exec ':silent !rm ' . old_name
+    redraw!
+  endif
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EXTRACT VARIABLE (SKETCHY)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! ExtractVariable()
-    let name = input("Variable name: ")
-    if name == ''
-        return
-    endif
-    " Enter visual mode (not sure why this is needed since we're already in
-    " visual mode anyway)
-    normal! gv
+  let name = input("Variable name: ")
+  if name == ''
+    return
+  endif
+  " Enter visual mode (not sure why this is needed since we're already in
+  " visual mode anyway)
+  normal! gv
 
-    " Replace selected text with the variable name
-    exec "normal c" . name
-    " Define the variable on the line above
-    exec "normal! O" . name . " = "
-    " Paste the original selected text to be the variable value
-    normal! $p
-	if (&filetype == 'php' || &filetype == 'javascript' || &filetype == 'c')
-		normal! A;
-	endif
+  " Replace selected text with the variable name
+  exec "normal c" . name
+  " Define the variable on the line above
+  exec "normal! O" . name . " = "
+  " Paste the original selected text to be the variable value
+  normal! $p
+  if (&filetype == 'php' || &filetype == 'javascript' || &filetype == 'c')
+    normal! A;
+  endif
 endfunction
 vnoremap <leader>x :call ExtractVariable()<cr>
 
@@ -144,12 +144,12 @@ hi RedBar   term=reverse ctermfg=white ctermbg=red guifg=white guibg=red
 " Indent if we're at the beginning of a line. Else, do completion.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  else
+    return "\<c-p>"
+  endif
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
@@ -159,36 +159,36 @@ inoremap <s-tab> <c-n>
 " Add selecta mapping if installed (https://github.com/garybernhardt/selecta)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if executable("selecta")
-	" Run a given vim command on the results of fuzzy selecting from a given shell
-	" command. See usage below.
-	" Optional 3rd parameter is passed as stdin to choice_command.
-	function! SelectaCommand(choice_command, vim_command, ...)
-		try
-			if a:0 > 0
-				silent! exec a:vim_command . " " . system(a:choice_command . " | selecta", a:1)
-			else
-				silent! exec a:vim_command . " " . system(a:choice_command . " | selecta")
-			endif
-		catch /Vim:Interrupt/
-			" Swallow the ^C so that the redraw below happens; otherwise there will be
-			" leftovers from selecta on the screen
-		endtry
-		redraw!
-	endfunction
+  " Run a given vim command on the results of fuzzy selecting from a given shell
+  " command. See usage below.
+  " Optional 3rd parameter is passed as stdin to choice_command.
+  function! SelectaCommand(choice_command, vim_command, ...)
+    try
+      if a:0 > 0
+        silent! exec a:vim_command . " " . system(a:choice_command . " | selecta", a:1)
+      else
+        silent! exec a:vim_command . " " . system(a:choice_command . " | selecta")
+      endif
+    catch /Vim:Interrupt/
+      " Swallow the ^C so that the redraw below happens; otherwise there will be
+      " leftovers from selecta on the screen
+    endtry
+    redraw!
+  endfunction
 
-	" Fuzzy select project files. Open the selected file with :e.
-	" Selecting seems to work better for me with paths sorted by length, ascending.
-	noremap <leader>f :call SelectaCommand("git ls-files -cdmo \| perl -e 'print sort {length $a <=> length $b} <>'", ":e")<cr>
+  " Fuzzy select project files. Open the selected file with :e.
+  " Selecting seems to work better for me with paths sorted by length, ascending.
+  noremap <leader>f :call SelectaCommand("git ls-files -cdmo \| perl -e 'print sort {length $a <=> length $b} <>'", ":e")<cr>
 
-	" Fuzzy select buffers using selecta
-	function! SelectaBuffers(vim_command)
-		redir => l:buffers
-			silent buffers
-		redir END
-		silent call SelectaCommand("sed -n 's/.*\"\\(.*\\)\".*/\\1/p'", a:vim_command, l:buffers)
-	endfunction
+  " Fuzzy select buffers using selecta
+  function! SelectaBuffers(vim_command)
+    redir => l:buffers
+    silent buffers
+    redir END
+    silent call SelectaCommand("sed -n 's/.*\"\\(.*\\)\".*/\\1/p'", a:vim_command, l:buffers)
+  endfunction
 
-	noremap <leader>b :call SelectaBuffers(":b")<cr>
+  noremap <leader>b :call SelectaBuffers(":b")<cr>
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -196,9 +196,9 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 function! ScratchEdit(cmd, options)
-	exe a:cmd tempname()
-	setl buftype=nofile bufhidden=wipe nobuflisted
-	if !empty(a:options) | exe 'setl' a:options | endif
+  exe a:cmd tempname()
+  setl buftype=nofile bufhidden=wipe nobuflisted
+  if !empty(a:options) | exe 'setl' a:options | endif
 endfunction
 
 command! -bar -nargs=* Sedit call ScratchEdit('edit', <q-args>)
@@ -211,10 +211,10 @@ command! -bar -nargs=* Scratch call ScratchEdit('vsplit', <q-args>)
 " Open a Scratch buffer with contents of templates/scratch.{filetype}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! ScratchTemplate(filetype)
-	call ScratchEdit('edit', 'ft='.a:filetype)
-	0,$d
-	exe "read " . g:vim_dir . "/templates/scratch." . a:filetype
-	0d
+  call ScratchEdit('edit', 'ft='.a:filetype)
+  0,$d
+  exe "read " . g:vim_dir . "/templates/scratch." . a:filetype
+  0d
 endfunction
 
 command! -nargs=1 TScratch call ScratchTemplate(<f-args>)
@@ -224,8 +224,8 @@ command! -nargs=1 TScratch call ScratchTemplate(<f-args>)
 " if / for / etc)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! ReformatBraces()
-	FixWhitespace
-	g/^[\t ]*{/normal kJ
+  FixWhitespace
+  g/^[\t ]*{/normal kJ
 endfunction
 " } " << commented brace fixes syntax highlighting below here.
 
@@ -233,11 +233,11 @@ endfunction
 " Regenerate tags
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CTags()
-	if exists(':Dispatch') == 2
-		Dispatch! ctags -f .tags
-	else
-		exec system("ctags -f .tags 2>/dev/null")
-	endif
+  if exists(':Dispatch') == 2
+    Dispatch! find . -name '*.php' -newer .tags | ctags -f .tags -L -
+  else
+    exec system("find . -name '*.php' -newer .tags | ctags -f .tags -L - 2>/dev/null")
+  endif
 endfunction
 set tags=.tags
 
@@ -268,20 +268,20 @@ command! -nargs=+ -complete=command Bufdo call BufDo(<q-args>)
 " Toggle paste and redraw statusline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! TogglePasteMode()
-	set paste!
-	Windofast redrawstatus
+  set paste!
+  Windofast redrawstatus
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle unnamed clipboard and redraw statusline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! ToggleUnnamedClipboard()
-	if &clipboard == 'unnamed'
-		set clipboard=
-	else
-		set clipboard=unnamed
-	endif
-	Windofast redrawstatus
+  if &clipboard == 'unnamed'
+    set clipboard=
+  else
+    set clipboard=unnamed
+  endif
+  Windofast redrawstatus
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -296,14 +296,14 @@ function! SophHelp()
     catch /:E149:\|:E661:/
       " E149 no help for <subject>
       " E661 no <language> help for <subject>
-		try
-			exec "help ".expand("<cword>")
-		catch /:E149:\|:E661:/
-		" E149 no help for <subject>
-		" E661 no <language> help for <subject>
-			exec "normal K"
-		endtry
-	endtry
+      try
+        exec "help ".expand("<cword>")
+      catch /:E149:\|:E661:/
+        " E149 no help for <subject>
+        " E661 no <language> help for <subject>
+        exec "normal K"
+      endtry
+    endtry
   endif
 endfunc
 
