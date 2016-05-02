@@ -82,7 +82,7 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !has('python')
-    s:ErrMsg( "Error: Required Vim compiled with +python" )
+    echo "swap-parameters not loaded - requires vim compiled with +python"
     finish
 endif
 
