@@ -6,11 +6,6 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 " vim-commentary
 nmap <leader>/ gcc
 
-" Use ag if available
-if executable("ag")
-	let g:ackprg = 'ag --nogroup --nocolor --column'
-endif
-
 " Nerd Tree settings
 nmap <leader>z :NERDTreeFind<CR>
 nmap <leader>x :NERDTreeFocus<CR>
