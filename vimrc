@@ -1,6 +1,10 @@
 
 call pathogen#infect()
 
+if has("nvim")
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+
 source ~/.vim/global.vim
 source ~/.vim/bindings.vim
 source ~/.vim/plugins.vim
