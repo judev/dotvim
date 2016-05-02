@@ -77,6 +77,12 @@ nmap <leader>j <C-w>j<C-w>_
 nmap <leader>k <C-w>k<C-w>_
 nmap <leader>l <C-w>l<C-w>\|
 
+" arrow keys to resize current window
+nmap <silent> <up> :exe "resize " . (winheight(0) * 2/3)<cr>
+nmap <silent> <down> :exe "resize " . max([2, winheight(0) * 3/2])<cr>
+nmap <silent> <left> :exe "vertical resize " . (winwidth(0) * 2/3)<cr>
+nmap <silent> <right> :exe "vertical resize " . max([2, winwidth(0) * 3/2])<cr>
+
 " split window
 nmap <leader>wh        :leftabove  vsplit<CR>
 nmap <leader>wl        :rightbelow vsplit<CR>
