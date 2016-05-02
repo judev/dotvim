@@ -99,6 +99,7 @@ set completeopt=menu,preview
 set wildmenu
 set wildmode=longest:list,full
 set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif
+set wildignorecase
 
 set shell=/bin/bash
 let bash_is_sh=1
