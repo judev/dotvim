@@ -10,8 +10,12 @@ nnoremap k gk
 nnoremap Y y$
 
 " use <leader>y to yank to system clipboard
-map <leader>y "*y
-map <leader>Y "*Y
+map <leader>y "+y
+map <leader>Y "+Y
+
+" use <leader>p to put from system clipboard
+map <leader>p "+p
+map <leader>P "+P
 
 " use <leader>d to delete without clobbering previous yank/delete
 map <leader>d "_d
@@ -89,11 +93,11 @@ nmap <leader>wl        :rightbelow vsplit<CR>
 nmap <leader>wk        :leftabove  split<CR>
 nmap <leader>wj        :rightbelow split<CR>
 
-" w!! to write as root
-cmap w!! w !sudo tee % >/dev/null
+" W!! to write as root
+cmap W!! w !sudo tee % >/dev/null
 
 " <leader>cd to change working directory to current file directory
-nmap <silent> <leader>cd :cd %:p:h<CR>
+nmap <silent> <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " make paste reformat and indent if preceded by Esc
 nnoremap <Esc>P P'[v']=

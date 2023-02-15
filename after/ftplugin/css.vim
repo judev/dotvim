@@ -1,3 +1,2 @@
-
 setlocal iskeyword+=-
-
+setlocal et sw=2 ts=2 smartindent

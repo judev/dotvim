@@ -9,6 +9,15 @@ if &cp
     finish
 endif
 
-nmap <buffer>K :!open http://php.net/<cword><CR><CR>
+if exists("g:isDarwin") && g:isDarwin
+    nmap <buffer>K :!open http://php.net/<cword><CR><CR>
+else
+    function! WebOpen(word)
+	call w3m#Open(g:w3m#OPEN_VSPLIT, "http://php.net/".a:word)
+	execute 'normal! /'. a:word ."\<cr>"
+	execute "normal zt"
+    endfunction
+    nmap <buffer>K :call WebOpen(expand("<cword>"))<CR><CR>
+endif
 
 " vim:set ft=vim ts=8 sw=4 sts=4:

@@ -1,7 +1,8 @@
 
-
 " avoid proliferation of fugitive buffers (http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/)
 autocmd BufReadPost fugitive://* set bufhidden=delete
+
+let g:fugitive_gitlab_domains = ['https://code.medshr.org', 'https://code.cuttlefish.com']
 
 " vim-commentary
 nmap <leader>/ gcc
@@ -45,6 +46,12 @@ let g:syntastic_check_on_wq = 0
 
 let g:syntastic_javascript_checkers = ['eslint']
 
+" typescript
+
+let g:typescript_compiler_binary = "./node_modules/typescript/bin/tsc"
+let g:typescript_compiler_options = "--jsx preserve --noEmit -b"
+
+" text
 
 :command! -range=% -nargs=0 T2S execute "<line1>,<line2>s/^\\t\\+/\\=substitute(submatch(0), '\\t', repeat(' ', ".&ts."), 'g')"
 :command! -range=% -nargs=0 S2T execute "<line1>,<line2>s/^\\( \\{".&ts."\\}\\)\\+/\\=substitute(submatch(0), ' \\{".&ts."\\}', '\\t', 'g')"
@@ -56,6 +63,21 @@ function! Textwrap()
 	setlocal textwidth=0
 	setlocal wrapmargin=0
 endfunction
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vdebug settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if !exists('g:vdebug_options')
+	let g:vdebug_options = {}
+endif
+let g:vdebug_options.port = 9003
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Python settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " <leader>_ Toggle iskeyword contain or not contain '_'

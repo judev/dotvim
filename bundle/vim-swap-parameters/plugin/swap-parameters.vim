@@ -5,9 +5,9 @@
 "
 " Author:        Kamil Dworakowski <kamil-at-dworakowski.name>
 "                Jude Venn <judev@cuttlefish.com>
-" Version:       1.1.4
+" Version:       1.1.5
 " Last Change:   2014-03-10 - removed bindings in favour of <Plug>commands
-" Requires:      Python and Vim compiled with +python option
+" Requires:      Python and Vim compiled with +python or +python3 option
 " Licence:       MIT Licence
 " Installation:  Drop into plugin directory
 " Basic Usecase: Place the cursor inside the parameter you want to swap
@@ -78,17 +78,17 @@
 "
 " 
 " This script is written in python. Therefore it needs Vim compiled with
-" +python option (:version), as well as Python installed in the system.
+" +python or +python3 option (:version), as well as Python installed in the system.
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if !has('python')
-    echo "swap-parameters not loaded - requires vim compiled with +python"
+if !has('python') && !has('python3')
+    echo "swap-parameters not loaded - requires vim compiled with +python or +python3"
     finish
 endif
 
 
 function! SwapParams(directionName)
-python << EOF
+python3 << EOF
 leftBrackets = ['[', '(']
 rightBrackets = [']', ')']
 
@@ -217,10 +217,10 @@ def SwapBackwards(line, col):
 EOF
 
 if a:directionName == 'backwards'
-    python Swap = SwapBackwards 
+    python3 Swap = SwapBackwards 
 endif
 
-python << EOF
+python3 << EOF
 if __name__ == '__main__':
     import vim
     (row,col) = vim.current.window.cursor
@@ -229,8 +229,8 @@ if __name__ == '__main__':
         (line, newCol) = Swap(line,col)
         vim.current.buffer[row-1] = line
         vim.current.window.cursor = (row, newCol)
-    except Exception, e:
-        print e
+    except (Exception, e):
+        print(e)
 EOF
 endfunction
 

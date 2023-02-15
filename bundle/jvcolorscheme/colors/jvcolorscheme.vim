@@ -243,7 +243,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("Normal", "ffffff", "272727", "")
 
     " highlight groups
-    call <SID>X("Cursor", "272727", "ffde66", "")
+    " call <SID>X("Cursor", "272727", "ffde66", "")
     "CursorIM
     "Directory
     call <SID>X("DiffAdd", "339933", "274727", "")
@@ -287,6 +287,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("Todo", "ff4500", "eeee00", "")
 
 	if version >= 700 " Vim 7.x specific colors
+		call <SID>X("ColorColumn", "", "303030", "")
 		call <SID>X("CursorLine", "", "313131", "none")
 		call <SID>X("CursorColumn", "", "313131", "none")
 		"hi CursorColumn   guifg=NONE        guibg=#121212     gui=NONE
