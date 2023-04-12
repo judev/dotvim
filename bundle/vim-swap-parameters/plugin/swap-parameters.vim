@@ -82,7 +82,7 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !has('python') && !has('python3')
-    echo "swap-parameters not loaded - requires vim compiled with +python or +python3"
+    "echo "swap-parameters not loaded - requires vim compiled with +python or +python3"
     finish
 endif
 
