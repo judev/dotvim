@@ -57,3 +57,9 @@
 [submodule "bundle/vim-jsx"]
 	path = bundle/vim-jsx
 	url = https://github.com/mxw/vim-jsx.git
+[submodule "bundle/yats.vim"]
+	path = bundle/yats.vim
+	url = https://github.com/HerringtonDarkholme/yats.vim.git
+[submodule "bundle/yajs.vim"]
+	path = bundle/yajs.vim
+	url = https://github.com/othree/yajs.vim.git
