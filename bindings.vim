@@ -99,9 +99,9 @@ cmap W!! w !sudo tee % >/dev/null
 " <leader>cd to change working directory to current file directory
 nmap <silent> <leader>cd :cd %:p:h<CR>:pwd<CR>
 
-" make paste reformat and indent if preceded by Esc
-nnoremap <Esc>P P'[v']=
-nnoremap <Esc>p p'[v']=
+" make paste reformat and indent if preceded by leader
+nnoremap <leader>P P'[v']=
+nnoremap <leader>p p'[v']=
 
 " disable middle click to paste on mac
 if exists("g:isDarwin") && g:isDarwin
@@ -137,5 +137,4 @@ imap <F1> <Esc>
 
 " make ctrl-l in insert mode insert hash rocket
 imap <c-l> <space>=><space>
-
 
