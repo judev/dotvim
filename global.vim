@@ -82,11 +82,19 @@ if v:version >= 703
 	set undofile
 endif
 
-set backupdir=~/.backup//,.
-if v:version >= 703
-	set undodir=~/.backup//,.
+if has("nvim")
+	set backupdir=~/.nvim-backup//,.
+	if v:version >= 703
+		set undodir=~/.nvim-backup//,.
+	endif
+	set directory=~/.nvim-backup//,~/tmp//,.
+else
+	set backupdir=~/.backup//,.
+	if v:version >= 703
+		set undodir=~/.backup//,.
+	endif
+	set directory=~/.backup//,~/tmp//,.
 endif
-set directory=~/.backup//,~/tmp//,.
 
 
 set foldcolumn=0        " columns for folding
