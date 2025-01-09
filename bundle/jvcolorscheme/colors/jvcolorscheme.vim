@@ -264,7 +264,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("StatusLine", "c2bfa5", "000000", "reverse")
     call <SID>X("StatusLineNC", "c2bfa5", "7f7f7f", "reverse")
     call <SID>X("Title", "cd5c5c", "", "")
-    call <SID>X("Visual", "6b8e23", "f0e68c", "reverse")
+    call <SID>X("Visual", "366534", "c2bfa5", "reverse")
     "VisualNOS
     call <SID>X("WarningMsg", "fa8072", "", "")
     "WildMenu
@@ -296,7 +296,10 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 		call <SID>X("Pmenu", "afaf5f", "181818", "")
 		call <SID>X("PmenuSel", "000000", "afaf5f", "")
 		call <SID>X("Search", "dfffdf", "4e4e4e", "")
+		call <SID>X("QuickFixLine", "181818", "afaf5f", "reverse")
 	endif
+    call <SID>X("qfFileName", "dfffdf", "", "")
+    call <SID>X("qfLineNr", "ffcc00", "", "")
 
     call <SID>X("htmlItalic", "ffffff", "272727", "none,underline")
     " delete functions {{{
